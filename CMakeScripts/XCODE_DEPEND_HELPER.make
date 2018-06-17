@@ -8,21 +8,21 @@ default:
 # link.  This forces Xcode to relink the targets from scratch.  It
 # does not seem to check these dependencies itself.
 PostBuild.ZombieShooter.Release:
-/Users/gilbertgwizdala/Desktop/ZombieShooter/bin/ZombieShooter:\
+/Users/gilbertgwizdala/Documents/ZombieShooter/bin/ZombieShooter:\
 	/usr/local/opt/urho3d/lib/Urho3D/libUrho3D.a
-	/bin/rm -f /Users/gilbertgwizdala/Desktop/ZombieShooter/bin/ZombieShooter
+	/bin/rm -f /Users/gilbertgwizdala/Documents/ZombieShooter/bin/ZombieShooter
 
 
 PostBuild.ZombieShooter.RelWithDebInfo:
-/Users/gilbertgwizdala/Desktop/ZombieShooter/bin/ZombieShooter:\
+/Users/gilbertgwizdala/Documents/ZombieShooter/bin/ZombieShooter:\
 	/usr/local/opt/urho3d/lib/Urho3D/libUrho3D.a
-	/bin/rm -f /Users/gilbertgwizdala/Desktop/ZombieShooter/bin/ZombieShooter
+	/bin/rm -f /Users/gilbertgwizdala/Documents/ZombieShooter/bin/ZombieShooter
 
 
 PostBuild.ZombieShooter.Debug:
-/Users/gilbertgwizdala/Desktop/ZombieShooter/bin/ZombieShooter:\
+/Users/gilbertgwizdala/Documents/ZombieShooter/bin/ZombieShooter:\
 	/usr/local/opt/urho3d/lib/Urho3D/libUrho3D.a
-	/bin/rm -f /Users/gilbertgwizdala/Desktop/ZombieShooter/bin/ZombieShooter
+	/bin/rm -f /Users/gilbertgwizdala/Documents/ZombieShooter/bin/ZombieShooter
 
 
 

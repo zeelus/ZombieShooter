@@ -1,0 +1,4 @@
+Cannot generate into /Users/gilbertgwizdala/Documents/ZombieShooter
+It is already used for project /Users/gilbertgwizdala/Desktop/ZombieShooter
+
+Please either delete it manually or select another generation directory

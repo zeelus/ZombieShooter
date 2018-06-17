@@ -22,7 +22,7 @@ include (UrhoCommon)
 set (TARGET_NAME ZombieShooter)
 
 file (GLOB CPP_FILES *.cpp)
-file (GLOB H_FILES *.h)
+file (GLOB H_FILES *.hpp)
 set (SOURCE_FILES ${CPP_FILES} ${H_FILES})
 
 # Define source files

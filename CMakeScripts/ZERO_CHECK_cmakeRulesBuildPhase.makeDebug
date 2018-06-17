@@ -2,9 +2,9 @@
 # Custom rules for ZERO_CHECK
 .SUFFIXES: 
 all: \
-	/Users/gilbertgwizdala/Desktop/ZombieShooter/CMakeFiles/ZERO_CHECK
+	/Users/gilbertgwizdala/Documents/ZombieShooter/CMakeFiles/ZERO_CHECK
 
 
-/Users/gilbertgwizdala/Desktop/ZombieShooter/CMakeFiles/ZERO_CHECK: 
+/Users/gilbertgwizdala/Documents/ZombieShooter/CMakeFiles/ZERO_CHECK: 
 	echo ""
-	make -f /Users/gilbertgwizdala/Desktop/ZombieShooter/CMakeScripts/ReRunCMake.make
+	make -f /Users/gilbertgwizdala/Documents/ZombieShooter/CMakeScripts/ReRunCMake.make

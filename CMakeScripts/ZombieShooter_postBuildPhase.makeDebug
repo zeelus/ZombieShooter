@@ -6,4 +6,4 @@ all: \
 
 
 ZombieShooter_buildpart_0: 
-	cd /Users/gilbertgwizdala/Desktop/ZombieShooter/build && mkdir -p $(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) && ln -sf /Users/gilbertgwizdala/Desktop/ZombieShooter/bin/ZombieShooter $(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ZombieShooter
+	cd /Users/gilbertgwizdala/Documents/ZombieShooter/build && mkdir -p $(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) && ln -sf /Users/gilbertgwizdala/Documents/ZombieShooter/bin/ZombieShooter $(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ZombieShooter
