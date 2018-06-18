@@ -49,6 +49,7 @@
 		3630FC9DE1ED4F40915D6275 /* MainSceneXXX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3510F61C9AE3400BBDA63C6F /* MainSceneXXX.cpp */; };
 		7A2D30475DCC4233B81D5997 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71F5B4F4C4A84257BF8F657E /* main.cpp */; };
 		940C74792E414570A793813D /* ZombieShooter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7759115F6D7248B0A2623B7D /* ZombieShooter.cpp */; };
+		D975D37D20D8462F00FB9A93 /* Mover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D975D37B20D8462F00FB9A93 /* Mover.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 		A1C910475C924B6DACD11D4A /* UrhoIcon.icns */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = UrhoIcon.icns; path = bin/Data/Textures/UrhoIcon.icns; sourceTree = SOURCE_ROOT; };
 		BE0D689F9ECD4DA6B3AB3F6C /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 		D3F4513A91C74E5691F9765A /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		D975D37B20D8462F00FB9A93 /* Mover.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mover.cpp; sourceTree = "<group>"; };
+		D975D37C20D8462F00FB9A93 /* Mover.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mover.hpp; sourceTree = "<group>"; };
 		D9B527C520D6F6D200EC5763 /* ZombieShooter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ZombieShooter.hpp; sourceTree = "<group>"; };
 		ECA1CF1877AC4AF78D5D6CDC /* CoreData */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = CoreData; path = bin/CoreData; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -164,6 +167,8 @@
 				3510F61C9AE3400BBDA63C6F /* MainSceneXXX.cpp */,
 				7759115F6D7248B0A2623B7D /* ZombieShooter.cpp */,
 				71F5B4F4C4A84257BF8F657E /* main.cpp */,
+				D975D37B20D8462F00FB9A93 /* Mover.cpp */,
+				D975D37C20D8462F00FB9A93 /* Mover.hpp */,
 			);
 			name = "Source Files";
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 				3630FC9DE1ED4F40915D6275 /* MainSceneXXX.cpp in Sources */,
 				940C74792E414570A793813D /* ZombieShooter.cpp in Sources */,
 				7A2D30475DCC4233B81D5997 /* main.cpp in Sources */,
+				D975D37D20D8462F00FB9A93 /* Mover.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -78,6 +78,10 @@ dependencies: \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Scene/../Scene/ValueAnimationInfo.h \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Scene/../Scene/AnimationDefs.h \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../UI/UIBatch.h \
+  /Users/gilbertgwizdala/Documents/ZombieShooter/Mover.hpp \
+  /usr/local/opt/urho3d/include/Urho3D/Scene/LogicComponent.h \
+  /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Scene/../Scene/Component.h \
+  /usr/local/opt/urho3d/include/Urho3D/Graphics/Terrain.h \
   /usr/local/opt/urho3d/include/Urho3D/Core/CoreEvents.h \
   /usr/local/opt/urho3d/include/Urho3D/Engine/EngineDefs.h \
   /usr/local/opt/urho3d/include/Urho3D/Graphics/AnimatedModel.h \
@@ -90,7 +94,6 @@ dependencies: \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Scene/../IO/../IO/Deserializer.h \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Graphics/../Graphics/StaticModel.h \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Graphics/../Graphics/Drawable.h \
-  /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Graphics/../Scene/Component.h \
   /usr/local/opt/urho3d/include/Urho3D/Graphics/Animation.h \
   /usr/local/opt/urho3d/include/Urho3D/Graphics/AnimationState.h \
   /usr/local/opt/urho3d/include/Urho3D/Graphics/Camera.h \
@@ -117,5 +120,4 @@ dependencies: \
   /usr/local/opt/urho3d/include/Urho3D/IO/FileSystem.h \
   /usr/local/opt/urho3d/include/Urho3D/UI/Font.h \
   /usr/local/opt/urho3d/include/Urho3D/UI/Text.h \
-  /usr/local/opt/urho3d/include/Urho3D/UI/UI.h \
-  /usr/local/opt/urho3d/include/Urho3D/Graphics/Terrain.h
+  /usr/local/opt/urho3d/include/Urho3D/UI/UI.h

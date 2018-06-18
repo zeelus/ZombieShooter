@@ -6,6 +6,7 @@
 //
 
 #include "ZombieShooter.hpp"
+#include "Mover.hpp"
 
 #include <Urho3D/Core/CoreEvents.h>
 #include <Urho3D/Engine/Engine.h>
@@ -33,7 +34,7 @@
 ZombieShooter::ZombieShooter(Context* context) : Application(context), drawDebug_(false)
 {
     // Register an object factory for our custom Mover component so that we can create them to scene nodes
-    
+    context->RegisterFactory<Mover>();
 }
 
 void ZombieShooter::Setup() {
@@ -68,6 +69,11 @@ void ZombieShooter::Start()
     // Set the mouse mode to use in the sample
     MouseMode(MM_ABSOLUTE);
 }
+
+const unsigned NUM_MODELS = 30;
+const float MODEL_MOVE_SPEED = 2.0f;
+const float MODEL_ROTATE_SPEED = 100.0f;
+const BoundingBox bounds(Vector3(-30.0f, 0.0f, -30.0f), Vector3(30.0f, 0.0f, 30.0f));
 
 void ZombieShooter::CreateScene()
 {
@@ -105,9 +111,9 @@ void ZombieShooter::CreateScene()
     terrain->SetCastShadows(true);
     terrain->SetOccluder(true);
 
-    for (unsigned i = 0; i < 1; ++i)
+    for (unsigned i = 0; i < NUM_MODELS; ++i)
     {
-        Node* modelNode = scene_->CreateChild("Jill");
+        Node* modelNode = scene_->CreateChild("Zombie " + String(i));
         modelNode->SetPosition(Vector3(Random(40.0f) - 20.0f, 0.0f, Random(40.0f) - 20.0f));
         modelNode->SetRotation(Quaternion(0.0f, Random(360.0f), 0.0f));
         
@@ -132,8 +138,9 @@ void ZombieShooter::CreateScene()
         }
         
         // Create our custom Mover component that will move & animate the model during each frame's update
-//        Mover* mover = modelNode->CreateComponent<Mover>();
-//        mover->SetParameters(MODEL_MOVE_SPEED, MODEL_ROTATE_SPEED, bounds);
+        Mover* mover = modelNode->CreateComponent<Mover>();
+        mover->SetParameters(MODEL_MOVE_SPEED, MODEL_ROTATE_SPEED, bounds);
+        mover->SetTerrain(terrain);
     }
 
 }
