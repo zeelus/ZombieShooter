@@ -120,4 +120,10 @@ dependencies: \
   /usr/local/opt/urho3d/include/Urho3D/IO/FileSystem.h \
   /usr/local/opt/urho3d/include/Urho3D/UI/Font.h \
   /usr/local/opt/urho3d/include/Urho3D/UI/Text.h \
-  /usr/local/opt/urho3d/include/Urho3D/UI/UI.h
+  /usr/local/opt/urho3d/include/Urho3D/UI/UI.h \
+  /usr/local/opt/urho3d/include/Urho3D/Audio/Sound.h \
+  /usr/local/opt/urho3d/include/Urho3D/Audio/SoundSource3D.h \
+  /usr/local/opt/urho3d/include/Urho3D/Audio/../Audio/SoundSource.h \
+  /usr/local/opt/urho3d/include/Urho3D/Audio/../Audio/AudioDefs.h \
+  /usr/local/opt/urho3d/include/Urho3D/Audio/SoundListener.h \
+  /usr/local/opt/urho3d/include/Urho3D/Audio/Audio.h

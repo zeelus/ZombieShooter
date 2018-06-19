@@ -30,6 +30,10 @@
 #include <Urho3D/UI/Text.h>
 #include <Urho3D/UI/UI.h>
 #include <Urho3D/Graphics/Terrain.h>
+#include <Urho3D/Audio/Sound.h>
+#include <Urho3D/Audio/SoundSource3D.h>
+#include <Urho3D/Audio/SoundListener.h>
+#include <Urho3D/Audio/Audio.h>
 
 ZombieShooter::ZombieShooter(Context* context) : Application(context), drawDebug_(false)
 {
@@ -44,7 +48,7 @@ void ZombieShooter::Setup() {
     engineParameters_["WindowHeight"]=720;
     engineParameters_["WindowResizable"]=true;
     engineParameters_[EP_HEADLESS]     = false;
-    engineParameters_[EP_SOUND]        = false;
+    engineParameters_[EP_SOUND]        = true;
 }
 
 void ZombieShooter::Start()
@@ -71,7 +75,7 @@ void ZombieShooter::Start()
 }
 
 const unsigned NUM_MODELS = 30;
-const float MODEL_MOVE_SPEED = 2.0f;
+const float MODEL_MOVE_SPEED = 1.0f;
 const float MODEL_ROTATE_SPEED = 100.0f;
 const BoundingBox bounds(Vector3(-30.0f, 0.0f, -30.0f), Vector3(30.0f, 0.0f, 30.0f));
 
@@ -116,16 +120,22 @@ void ZombieShooter::CreateScene()
         Node* modelNode = scene_->CreateChild("Zombie " + String(i));
         modelNode->SetPosition(Vector3(Random(40.0f) - 20.0f, 0.0f, Random(40.0f) - 20.0f));
         modelNode->SetRotation(Quaternion(0.0f, Random(360.0f), 0.0f));
+        modelNode->SetScale(0.02);
         
-        AnimatedModel* modelObject = modelNode->CreateComponent<AnimatedModel>();
-        modelObject->SetModel(cache->GetResource<Model>("Models/Kachujin/Kachujin.mdl"));
-        modelObject->SetMaterial(cache->GetResource<Material>("Models/Kachujin/Materials/Kachujin.xml"));
+        Node* adjustNode = modelNode->CreateChild("AdjNode");
+        Quaternion qAdjRot(180, Vector3(0,1,0) ); // rotate it by 180
+        adjustNode->SetRotation( qAdjRot );
+        
+        AnimatedModel* modelObject = adjustNode->CreateComponent<AnimatedModel>();
+        modelObject->SetModel(cache->GetResource<Model>("Models/Zombie/Zombie.mdl"));
+        modelObject->SetMaterial(cache->GetResource<Material>("Models/Zombie/Materials/Material.xml"));
         modelObject->SetCastShadows(true);
+        
         
         // Create an AnimationState for a walk animation. Its time position will need to be manually updated to advance the
         // animation, The alternative would be to use an AnimationController component which updates the animation automatically,
         // but we need to update the model's position manually in any case
-        Animation* walkAnimation = cache->GetResource<Animation>("Models/Kachujin/Kachujin_Walk.ani");
+        Animation* walkAnimation = cache->GetResource<Animation>("Models/Zombie/ZombieWalk.ani");
         
         AnimationState* state = modelObject->AddAnimationState(walkAnimation);
         // The state would fail to create (return null) if the animation was not found
@@ -142,6 +152,12 @@ void ZombieShooter::CreateScene()
         mover->SetParameters(MODEL_MOVE_SPEED, MODEL_ROTATE_SPEED, bounds);
         mover->SetTerrain(terrain);
     }
+    
+    Sound* sound = cache->GetResource<Sound>("Music/Ninja Gods.ogg");
+    sound->SetLooped(true);
+    Node* node = scene_->CreateChild("Sound");
+    SoundSource* sound_source = node->CreateComponent<SoundSource>();
+    sound_source->Play(sound);
 
 }
 
