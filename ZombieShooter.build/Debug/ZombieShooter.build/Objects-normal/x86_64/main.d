@@ -1,5 +1,5 @@
-dependencies: /Users/gilbertgwizdala/Documents/ZombieShooter/main.cpp \
-  /Users/gilbertgwizdala/Documents/ZombieShooter/ZombieShooter.hpp \
+dependencies: /Users/pi29056/Documents/ZombieShooter/main.cpp \
+  /Users/pi29056/Documents/ZombieShooter/ZombieShooter.hpp \
   /usr/local/opt/urho3d/include/Urho3D/Engine/Application.h \
   /usr/local/opt/urho3d/include/Urho3D/Engine/../Core/Context.h \
   /usr/local/opt/urho3d/include/Urho3D/Engine/../Core/../Container/HashSet.h \
@@ -76,4 +76,9 @@ dependencies: /Users/gilbertgwizdala/Documents/ZombieShooter/main.cpp \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Scene/../Scene/Serializable.h \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Scene/../Scene/ValueAnimationInfo.h \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Scene/../Scene/AnimationDefs.h \
-  /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../UI/UIBatch.h
+  /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../UI/UIBatch.h \
+  /usr/local/opt/urho3d/include/Urho3D/Graphics/Terrain.h \
+  /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Graphics/../Scene/Component.h \
+  /Users/pi29056/Documents/ZombieShooter/Character.hpp \
+  /usr/local/opt/urho3d/include/Urho3D/Input/Controls.h \
+  /usr/local/opt/urho3d/include/Urho3D/Scene/LogicComponent.h

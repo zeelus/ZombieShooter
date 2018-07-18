@@ -10,6 +10,8 @@
 
 #include <Urho3D/Engine/Application.h>
 #include <Urho3D/Input/Input.h>
+#include <Urho3D/Graphics/Terrain.h>
+#include "Character.hpp"
 
 namespace Urho3D
 {
@@ -57,25 +59,31 @@ protected:
 
     
 private:
-    ///Setup
+    
     void Setup();
-    /// Construct the scene content.
+    
+    void extracted(Urho3D::ResourceCache *cache, unsigned int i, Urho3D::Terrain *terrain);
+    
     void CreateScene();
-    /// Construct an instruction text to the UI.
-    void CreateInstructions();
-    /// Set up a viewport for displaying the scene.
+    
+    void CreateCharacter();
+    
     void SetupViewport();
-    /// Subscribe to application-wide logic update and post-render update events.
+    
     void SubscribeToEvents();
-    /// Read input and moves the camera.
+    
     void MoveCamera(float timeStep);
-    /// Handle the logic update event.
+    
     void HandleUpdate(StringHash eventType, VariantMap& eventData);
-    /// Handle the post-render update event.
+    
     void HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData);
+    
+    void CreateZombie(Urho3D::ResourceCache *cache, unsigned int i, Urho3D::Terrain *terrain);
     
     /// Flag for drawing debug geometry.
     bool drawDebug_;
+
+    WeakPtr<Character> character_;
 };
 
 #endif /* ZombieShooter_hpp */

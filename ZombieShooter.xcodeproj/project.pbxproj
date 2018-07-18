@@ -7,222 +7,223 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		34D245E4A5134383962BB002 /* install */ = {
+		3693FBEA183E4A8E86606217 /* ALL_BUILD */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = B4CF0B7D9F9449B1AEC8ABF1 /* Build configuration list for PBXAggregateTarget "install" */;
+			buildConfigurationList = DE6AB5C14E2D423A8EDC2B23 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
 			buildPhases = (
-				40B461AA9D024F46BD99BB9F /* CMake PostBuild Rules */,
+				C785D04D7BF8457F92D7BE28 /* CMake Rules */,
 			);
 			dependencies = (
-				BB08F47355DD4B69A3B4F720 /* PBXTargetDependency */,
+				619B26F567BB41EAA9472A47 /* PBXTargetDependency */,
+				1C0B713505714E7DBA908009 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		74F33339C1E942E181311D36 /* install */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = CABA6EF25BAD453E9B863009 /* Build configuration list for PBXAggregateTarget "install" */;
+			buildPhases = (
+				59A05FF4422445309C04A7EB /* CMake PostBuild Rules */,
+			);
+			dependencies = (
+				3E663C25BFC644A589322CB2 /* PBXTargetDependency */,
 			);
 			name = install;
 			productName = install;
 		};
-		3CD373D941DD40EB87886737 /* ZERO_CHECK */ = {
+		86013DC74C4E40C5B82278DC /* ZERO_CHECK */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = E416D8A0D9EC40128D92646C /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildConfigurationList = 36810FD076BF49E6A1398C50 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
 			buildPhases = (
-				9F9416812CA340FCA3CDBB45 /* CMake Rules */,
+				1F5895303AAD414BA7DB0C5E /* CMake Rules */,
 			);
 			dependencies = (
 			);
 			name = ZERO_CHECK;
 			productName = ZERO_CHECK;
 		};
-		7411A29AB6E0473D9FB9BCFF /* ALL_BUILD */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 3E024F44D2A749AF93C54222 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
-			buildPhases = (
-				2EDFDBA770604D4D88103810 /* CMake Rules */,
-			);
-			dependencies = (
-				CD11EBD556F24E6CB3B5D13B /* PBXTargetDependency */,
-				78CA5E543A744FA2AB270044 /* PBXTargetDependency */,
-			);
-			name = ALL_BUILD;
-			productName = ALL_BUILD;
-		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		3630FC9DE1ED4F40915D6275 /* MainSceneXXX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3510F61C9AE3400BBDA63C6F /* MainSceneXXX.cpp */; };
-		7A2D30475DCC4233B81D5997 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71F5B4F4C4A84257BF8F657E /* main.cpp */; };
-		940C74792E414570A793813D /* ZombieShooter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7759115F6D7248B0A2623B7D /* ZombieShooter.cpp */; };
-		D975D37D20D8462F00FB9A93 /* Mover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D975D37B20D8462F00FB9A93 /* Mover.cpp */; };
+		2238C69420FFB5D5000AB322 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2238C69220FFB5D5000AB322 /* Character.cpp */; };
+		61E9825ED53441B1B3B00E4B /* ZombieShooter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34E6C561479B4277A41B5983 /* ZombieShooter.cpp */; };
+		63C2AF8FE2BD4B1A8C2A1F51 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A8BC3D0F4254D1A8E57FE17 /* main.cpp */; };
+		9D84C923D4A44AD4A5AE9A09 /* ZombieMover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 464BB77A93F44695A2049FD9 /* ZombieMover.cpp */; };
+		EA48DC6724DB47B9B333E271 /* MainSceneXXX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 411E93E294174E619BAA9AD4 /* MainSceneXXX.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		08E04FE714A342CB83AEE0D0 /* PBXContainerItemProxy */ = {
+		771AEA9CC22D474F90474BB6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D2D53F8834684FEFA81CD069 /* Project object */;
+			containerPortal = 63F255859ED34FACBA637D99 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 3CD373D941DD40EB87886737;
-			remoteInfo = ZERO_CHECK;
-		};
-		0F04DFCE621D4AA7B37E2E32 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D2D53F8834684FEFA81CD069 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7411A29AB6E0473D9FB9BCFF;
+			remoteGlobalIDString = 3693FBEA183E4A8E86606217;
 			remoteInfo = ALL_BUILD;
 		};
-		868B39DD8609448384E41BEC /* PBXContainerItemProxy */ = {
+		AA586F0A4CAD45E2AAD55CAA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D2D53F8834684FEFA81CD069 /* Project object */;
+			containerPortal = 63F255859ED34FACBA637D99 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 3CD373D941DD40EB87886737;
+			remoteGlobalIDString = 86013DC74C4E40C5B82278DC;
 			remoteInfo = ZERO_CHECK;
 		};
-		BC40D70C787840659118E21F /* PBXContainerItemProxy */ = {
+		AD9B1C8A7E08423B9860CC04 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D2D53F8834684FEFA81CD069 /* Project object */;
+			containerPortal = 63F255859ED34FACBA637D99 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D6627105463442D4A550AE66;
+			remoteGlobalIDString = 86013DC74C4E40C5B82278DC;
+			remoteInfo = ZERO_CHECK;
+		};
+		FF19E6B26B81478FB5BDD5BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63F255859ED34FACBA637D99 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC729B7827A647DFAC7F6169;
 			remoteInfo = ZombieShooter;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3510F61C9AE3400BBDA63C6F /* MainSceneXXX.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = MainSceneXXX.cpp; sourceTree = SOURCE_ROOT; };
-		3733B82D5B554D7F9633EBAD /* ZombieShooter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = ZombieShooter; sourceTree = BUILT_PRODUCTS_DIR; };
-		4BC12566182E4D27B7679678 /* Data */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = Data; path = bin/Data; sourceTree = SOURCE_ROOT; };
-		71F5B4F4C4A84257BF8F657E /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = main.cpp; sourceTree = SOURCE_ROOT; };
-		7759115F6D7248B0A2623B7D /* ZombieShooter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = ZombieShooter.cpp; sourceTree = SOURCE_ROOT; };
-		A1C910475C924B6DACD11D4A /* UrhoIcon.icns */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = UrhoIcon.icns; path = bin/Data/Textures/UrhoIcon.icns; sourceTree = SOURCE_ROOT; };
-		BE0D689F9ECD4DA6B3AB3F6C /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		D3F4513A91C74E5691F9765A /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		D975D37B20D8462F00FB9A93 /* Mover.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mover.cpp; sourceTree = "<group>"; };
-		D975D37C20D8462F00FB9A93 /* Mover.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mover.hpp; sourceTree = "<group>"; };
-		D9B527C520D6F6D200EC5763 /* ZombieShooter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ZombieShooter.hpp; sourceTree = "<group>"; };
-		ECA1CF1877AC4AF78D5D6CDC /* CoreData */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = CoreData; path = bin/CoreData; sourceTree = SOURCE_ROOT; };
+		1AA594293ADC4E27AC67FC70 /* CoreData */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = CoreData; path = bin/CoreData; sourceTree = SOURCE_ROOT; };
+		2238C69220FFB5D5000AB322 /* Character.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Character.cpp; sourceTree = "<group>"; };
+		2238C69320FFB5D5000AB322 /* Character.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Character.hpp; sourceTree = "<group>"; };
+		34E6C561479B4277A41B5983 /* ZombieShooter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = ZombieShooter.cpp; sourceTree = SOURCE_ROOT; };
+		411E93E294174E619BAA9AD4 /* MainSceneXXX.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = MainSceneXXX.cpp; sourceTree = SOURCE_ROOT; };
+		464BB77A93F44695A2049FD9 /* ZombieMover.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = ZombieMover.cpp; sourceTree = SOURCE_ROOT; };
+		658446EC24C648E28DF7810A /* Data */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = Data; path = bin/Data; sourceTree = SOURCE_ROOT; };
+		6A8BC3D0F4254D1A8E57FE17 /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = main.cpp; sourceTree = SOURCE_ROOT; };
+		7692641F4E9A42D1AE9A8C53 /* ZombieShooter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = ZombieShooter; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E38995A76CE48FAAB711657 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		B90D015316784FA693CA34C5 /* UrhoIcon.icns */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = UrhoIcon.icns; path = bin/Data/Textures/UrhoIcon.icns; sourceTree = SOURCE_ROOT; };
+		C62657DFD76247D6A3681ECD /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		26DA1737872143308291865B /* Resource Dirs */ = {
+		131EFA379F08418AA48D6DAB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				ECA1CF1877AC4AF78D5D6CDC /* CoreData */,
-				4BC12566182E4D27B7679678 /* Data */,
+				B90D015316784FA693CA34C5 /* UrhoIcon.icns */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		20AD832406BC42D5B3E4FA27 /* ZombieShooter */ = {
+			isa = PBXGroup;
+			children = (
+				8FD6AD6E1B15438380287FC6 /* Source Files */,
+				529B9B318A8B4D44B3F3E051 /* Resource Dirs */,
+				131EFA379F08418AA48D6DAB /* Resources */,
+				C62657DFD76247D6A3681ECD /* CMakeLists.txt */,
+			);
+			name = ZombieShooter;
+			sourceTree = "<group>";
+		};
+		529B9B318A8B4D44B3F3E051 /* Resource Dirs */ = {
+			isa = PBXGroup;
+			children = (
+				1AA594293ADC4E27AC67FC70 /* CoreData */,
+				658446EC24C648E28DF7810A /* Data */,
 			);
 			name = "Resource Dirs";
 			sourceTree = "<group>";
 		};
-		3B8CFCE055B04D67A3E1B21D = {
+		59F2F7C193BB491CA6EB59A1 = {
 			isa = PBXGroup;
 			children = (
-				85C14FD485EF4622B549FCEF /* ZombieShooter */,
-				A2FCF3655E5C435F9D567367 /* ALL_BUILD */,
-				46FAC4C491C745CA84EAFC86 /* Products */,
+				20AD832406BC42D5B3E4FA27 /* ZombieShooter */,
+				CE7B61649A0146549E374913 /* ALL_BUILD */,
+				B216C73CC9F641F8AE538099 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		46FAC4C491C745CA84EAFC86 /* Products */ = {
+		8FD6AD6E1B15438380287FC6 /* Source Files */ = {
 			isa = PBXGroup;
 			children = (
-				3733B82D5B554D7F9633EBAD /* ZombieShooter */,
+				411E93E294174E619BAA9AD4 /* MainSceneXXX.cpp */,
+				464BB77A93F44695A2049FD9 /* ZombieMover.cpp */,
+				34E6C561479B4277A41B5983 /* ZombieShooter.cpp */,
+				6A8BC3D0F4254D1A8E57FE17 /* main.cpp */,
+				2238C69220FFB5D5000AB322 /* Character.cpp */,
+				2238C69320FFB5D5000AB322 /* Character.hpp */,
 			);
-			name = Products;
+			name = "Source Files";
 			sourceTree = "<group>";
 		};
-		73815688BB0D4773ACA98BEF /* CMake Rules */ = {
+		984A3220BD214957958CEF55 /* CMake Rules */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = "CMake Rules";
 			sourceTree = "<group>";
 		};
-		859B01A0E49A4520A97EE815 /* Resources */ = {
+		B216C73CC9F641F8AE538099 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A1C910475C924B6DACD11D4A /* UrhoIcon.icns */,
+				7692641F4E9A42D1AE9A8C53 /* ZombieShooter */,
 			);
-			name = Resources;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		85C14FD485EF4622B549FCEF /* ZombieShooter */ = {
+		CE7B61649A0146549E374913 /* ALL_BUILD */ = {
 			isa = PBXGroup;
 			children = (
-				DDF41935EE344B168CB8DF8B /* Source Files */,
-				26DA1737872143308291865B /* Resource Dirs */,
-				859B01A0E49A4520A97EE815 /* Resources */,
-				D3F4513A91C74E5691F9765A /* CMakeLists.txt */,
-			);
-			name = ZombieShooter;
-			sourceTree = "<group>";
-		};
-		A2FCF3655E5C435F9D567367 /* ALL_BUILD */ = {
-			isa = PBXGroup;
-			children = (
-				73815688BB0D4773ACA98BEF /* CMake Rules */,
-				BE0D689F9ECD4DA6B3AB3F6C /* CMakeLists.txt */,
+				984A3220BD214957958CEF55 /* CMake Rules */,
+				7E38995A76CE48FAAB711657 /* CMakeLists.txt */,
 			);
 			name = ALL_BUILD;
-			sourceTree = "<group>";
-		};
-		DDF41935EE344B168CB8DF8B /* Source Files */ = {
-			isa = PBXGroup;
-			children = (
-				D9B527C520D6F6D200EC5763 /* ZombieShooter.hpp */,
-				3510F61C9AE3400BBDA63C6F /* MainSceneXXX.cpp */,
-				7759115F6D7248B0A2623B7D /* ZombieShooter.cpp */,
-				71F5B4F4C4A84257BF8F657E /* main.cpp */,
-				D975D37B20D8462F00FB9A93 /* Mover.cpp */,
-				D975D37C20D8462F00FB9A93 /* Mover.hpp */,
-			);
-			name = "Source Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D6627105463442D4A550AE66 /* ZombieShooter */ = {
+		FC729B7827A647DFAC7F6169 /* ZombieShooter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DD66AD2F68474A92A1D0CCDF /* Build configuration list for PBXNativeTarget "ZombieShooter" */;
+			buildConfigurationList = 59469482B0CE463B8338A143 /* Build configuration list for PBXNativeTarget "ZombieShooter" */;
 			buildPhases = (
-				1859E030D83A4FB3B74A5855 /* Sources */,
-				9C5FAD08E42446C5BD03C3D9 /* CMake PostBuild Rules */,
+				C5AF6770BF9E4DD89EE280BD /* Sources */,
+				B1285599818F4B2E8F6BA8EF /* CMake PostBuild Rules */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BB508AFE5325405EAD5D11CD /* PBXTargetDependency */,
+				64AD0206B24B4C4B9F94766E /* PBXTargetDependency */,
 			);
 			name = ZombieShooter;
 			productName = ZombieShooter;
-			productReference = 3733B82D5B554D7F9633EBAD /* ZombieShooter */;
+			productReference = 7692641F4E9A42D1AE9A8C53 /* ZombieShooter */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D2D53F8834684FEFA81CD069 /* Project object */ = {
+		63F255859ED34FACBA637D99 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 0940;
 			};
-			buildConfigurationList = 761C852B0BE8492498B63531 /* Build configuration list for PBXProject "ZombieShooter" */;
+			buildConfigurationList = 2825DE3809184A91AFB729CE /* Build configuration list for PBXProject "ZombieShooter" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 3B8CFCE055B04D67A3E1B21D;
+			mainGroup = 59F2F7C193BB491CA6EB59A1;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7411A29AB6E0473D9FB9BCFF /* ALL_BUILD */,
-				3CD373D941DD40EB87886737 /* ZERO_CHECK */,
-				D6627105463442D4A550AE66 /* ZombieShooter */,
-				34D245E4A5134383962BB002 /* install */,
+				3693FBEA183E4A8E86606217 /* ALL_BUILD */,
+				86013DC74C4E40C5B82278DC /* ZERO_CHECK */,
+				FC729B7827A647DFAC7F6169 /* ZombieShooter */,
+				74F33339C1E942E181311D36 /* install */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2EDFDBA770604D4D88103810 /* CMake Rules */ = {
+		1F5895303AAD414BA7DB0C5E /* CMake Rules */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -230,10 +231,10 @@
 			name = "CMake Rules";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "make -C /Users/gilbertgwizdala/Documents/ZombieShooter -f /Users/gilbertgwizdala/Documents/ZombieShooter/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			shellScript = "make -C /Users/pi29056/Documents/ZombieShooter -f /Users/pi29056/Documents/ZombieShooter/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
 			showEnvVarsInLog = 0;
 		};
-		40B461AA9D024F46BD99BB9F /* CMake PostBuild Rules */ = {
+		59A05FF4422445309C04A7EB /* CMake PostBuild Rules */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -241,10 +242,10 @@
 			name = "CMake PostBuild Rules";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "make -C /Users/gilbertgwizdala/Documents/ZombieShooter -f /Users/gilbertgwizdala/Documents/ZombieShooter/CMakeScripts/install_postBuildPhase.make$CONFIGURATION all";
+			shellScript = "make -C /Users/pi29056/Documents/ZombieShooter -f /Users/pi29056/Documents/ZombieShooter/CMakeScripts/install_postBuildPhase.make$CONFIGURATION all";
 			showEnvVarsInLog = 0;
 		};
-		9C5FAD08E42446C5BD03C3D9 /* CMake PostBuild Rules */ = {
+		B1285599818F4B2E8F6BA8EF /* CMake PostBuild Rules */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -252,10 +253,10 @@
 			name = "CMake PostBuild Rules";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "make -C /Users/gilbertgwizdala/Documents/ZombieShooter -f /Users/gilbertgwizdala/Documents/ZombieShooter/CMakeScripts/ZombieShooter_postBuildPhase.make$CONFIGURATION all";
+			shellScript = "make -C /Users/pi29056/Documents/ZombieShooter -f /Users/pi29056/Documents/ZombieShooter/CMakeScripts/ZombieShooter_postBuildPhase.make$CONFIGURATION all";
 			showEnvVarsInLog = 0;
 		};
-		9F9416812CA340FCA3CDBB45 /* CMake Rules */ = {
+		C785D04D7BF8457F92D7BE28 /* CMake Rules */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -263,60 +264,51 @@
 			name = "CMake Rules";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "make -C /Users/gilbertgwizdala/Documents/ZombieShooter -f /Users/gilbertgwizdala/Documents/ZombieShooter/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			shellScript = "make -C /Users/pi29056/Documents/ZombieShooter -f /Users/pi29056/Documents/ZombieShooter/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1859E030D83A4FB3B74A5855 /* Sources */ = {
+		C5AF6770BF9E4DD89EE280BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3630FC9DE1ED4F40915D6275 /* MainSceneXXX.cpp in Sources */,
-				940C74792E414570A793813D /* ZombieShooter.cpp in Sources */,
-				7A2D30475DCC4233B81D5997 /* main.cpp in Sources */,
-				D975D37D20D8462F00FB9A93 /* Mover.cpp in Sources */,
+				EA48DC6724DB47B9B333E271 /* MainSceneXXX.cpp in Sources */,
+				9D84C923D4A44AD4A5AE9A09 /* ZombieMover.cpp in Sources */,
+				61E9825ED53441B1B3B00E4B /* ZombieShooter.cpp in Sources */,
+				2238C69420FFB5D5000AB322 /* Character.cpp in Sources */,
+				63C2AF8FE2BD4B1A8C2A1F51 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		78CA5E543A744FA2AB270044 /* PBXTargetDependency */ = {
+		1C0B713505714E7DBA908009 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D6627105463442D4A550AE66 /* ZombieShooter */;
-			targetProxy = BC40D70C787840659118E21F /* PBXContainerItemProxy */;
+			target = 86013DC74C4E40C5B82278DC /* ZERO_CHECK */;
+			targetProxy = AD9B1C8A7E08423B9860CC04 /* PBXContainerItemProxy */;
 		};
-		BB08F47355DD4B69A3B4F720 /* PBXTargetDependency */ = {
+		3E663C25BFC644A589322CB2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7411A29AB6E0473D9FB9BCFF /* ALL_BUILD */;
-			targetProxy = 0F04DFCE621D4AA7B37E2E32 /* PBXContainerItemProxy */;
+			target = 3693FBEA183E4A8E86606217 /* ALL_BUILD */;
+			targetProxy = 771AEA9CC22D474F90474BB6 /* PBXContainerItemProxy */;
 		};
-		BB508AFE5325405EAD5D11CD /* PBXTargetDependency */ = {
+		619B26F567BB41EAA9472A47 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3CD373D941DD40EB87886737 /* ZERO_CHECK */;
-			targetProxy = 868B39DD8609448384E41BEC /* PBXContainerItemProxy */;
+			target = FC729B7827A647DFAC7F6169 /* ZombieShooter */;
+			targetProxy = FF19E6B26B81478FB5BDD5BD /* PBXContainerItemProxy */;
 		};
-		CD11EBD556F24E6CB3B5D13B /* PBXTargetDependency */ = {
+		64AD0206B24B4C4B9F94766E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3CD373D941DD40EB87886737 /* ZERO_CHECK */;
-			targetProxy = 08E04FE714A342CB83AEE0D0 /* PBXContainerItemProxy */;
+			target = 86013DC74C4E40C5B82278DC /* ZERO_CHECK */;
+			targetProxy = AA586F0A4CAD45E2AAD55CAA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0281745F227A415CABDA09FE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				SDKROOT = macosx;
-				SYMROOT = /Users/gilbertgwizdala/Documents/ZombieShooter/build;
-			};
-			name = Debug;
-		};
-		119918E273C84F3B8AA58E69 /* Debug */ = {
+		066FB5BFABE34ABD879E8ED3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -328,9 +320,9 @@
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = " ";
 				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
+				PRODUCT_NAME = ZERO_CHECK;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/gilbertgwizdala/Documents/ZombieShooter;
+				SYMROOT = /Users/pi29056/Documents/ZombieShooter;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -341,103 +333,7 @@
 			};
 			name = Debug;
 		};
-		24F782A14D2C4948B3AEEC49 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/gilbertgwizdala/Documents/ZombieShooter/bin;
-				EXECUTABLE_PREFIX = "";
-				EXECUTABLE_SUFFIX = "";
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					URHO3D_STATIC_DEFINE,
-					URHO3D_ANGELSCRIPT,
-					URHO3D_IK,
-					URHO3D_LOGGING,
-					URHO3D_LUA,
-					URHO3D_NAVIGATION,
-					URHO3D_NETWORK,
-					URHO3D_PHYSICS,
-					URHO3D_PROFILING,
-					URHO3D_THREADING,
-					URHO3D_URHO2D,
-					URHO3D_WEBP,
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					/usr/local/opt/urho3d/include,
-					/usr/local/opt/urho3d/include/Urho3D/ThirdParty,
-					/usr/local/opt/urho3d/include/Urho3D/ThirdParty/Bullet,
-					/usr/local/opt/urho3d/include/Urho3D/ThirdParty/Lua,
-				);
-				INSTALL_PATH = "";
-				LIBRARY_SEARCH_PATHS = "";
-				ONLY_ACTIVE_ARCH = "";
-				OTHER_CPLUSPLUSFLAGS = (
-					"-Wno-invalid-offsetof",
-					"-ffast-math",
-					"-pthread",
-					"-Qunused-arguments",
-					"-DNDEBUG",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-no_weak_imports",
-					"-Wl,-search_paths_first",
-					"-Wl,-headerpad_max_install_names",
-					/usr/local/opt/urho3d/lib/Urho3D/libUrho3D.a,
-					"-liconv",
-					"-framework",
-					AudioToolbox,
-					"-framework",
-					Carbon,
-					"-framework",
-					Cocoa,
-					"-framework",
-					CoreFoundation,
-					"-framework",
-					SystemConfiguration,
-					"-framework",
-					CoreAudio,
-					"-framework",
-					CoreServices,
-					"-framework",
-					CoreVideo,
-					"-framework",
-					ForceFeedback,
-					"-framework",
-					IOKit,
-					"-framework",
-					OpenGL,
-				);
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZombieShooter;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/gilbertgwizdala/Documents/ZombieShooter;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
-			};
-			name = Release;
-		};
-		2FFB645749654959B38E0C2A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				SDKROOT = macosx;
-				SYMROOT = /Users/gilbertgwizdala/Documents/ZombieShooter/build;
-			};
-			name = Release;
-		};
-		4699D8284B6542A892CF4015 /* RelWithDebInfo */ = {
+		0EA118E0277F4B19BC9FF922 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
@@ -453,7 +349,67 @@
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = install;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/gilbertgwizdala/Documents/ZombieShooter;
+				SYMROOT = /Users/pi29056/Documents/ZombieShooter;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		44CFF5BDD96E4910AD6FAB86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				SDKROOT = macosx;
+				SYMROOT = /Users/pi29056/Documents/ZombieShooter/build;
+			};
+			name = Release;
+		};
+		459E5FE7C76F4014BA0DE6FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/pi29056/Documents/ZombieShooter;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		4FA2C80596C2477986808BCE /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/pi29056/Documents/ZombieShooter;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -464,12 +420,72 @@
 			};
 			name = RelWithDebInfo;
 		};
-		6CC6178909C04932A64A01C4 /* RelWithDebInfo */ = {
+		5E640C99AC5D40EBB2B3C562 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/pi29056/Documents/ZombieShooter;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		765094988A75408CB440B367 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/pi29056/Documents/ZombieShooter;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		8192CA547B6644AE9A43D80F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				SDKROOT = macosx;
+				SYMROOT = /Users/pi29056/Documents/ZombieShooter/build;
+			};
+			name = Debug;
+		};
+		992D45A4AFF94A0D9E3A04A3 /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/gilbertgwizdala/Documents/ZombieShooter/bin;
+				CONFIGURATION_BUILD_DIR = /Users/pi29056/Documents/ZombieShooter/bin;
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -539,7 +555,7 @@
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = ZombieShooter;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/gilbertgwizdala/Documents/ZombieShooter;
+				SYMROOT = /Users/pi29056/Documents/ZombieShooter;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -550,12 +566,162 @@
 			};
 			name = RelWithDebInfo;
 		};
-		7D56BA521CED46FE87EE9484 /* Debug */ = {
+		9C6588281B6C4662B4D51A49 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/gilbertgwizdala/Documents/ZombieShooter/bin;
+				CONFIGURATION_BUILD_DIR = /Users/pi29056/Documents/ZombieShooter/bin;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					URHO3D_STATIC_DEFINE,
+					URHO3D_ANGELSCRIPT,
+					URHO3D_IK,
+					URHO3D_LOGGING,
+					URHO3D_LUA,
+					URHO3D_NAVIGATION,
+					URHO3D_NETWORK,
+					URHO3D_PHYSICS,
+					URHO3D_PROFILING,
+					URHO3D_THREADING,
+					URHO3D_URHO2D,
+					URHO3D_WEBP,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/opt/urho3d/include,
+					/usr/local/opt/urho3d/include/Urho3D/ThirdParty,
+					/usr/local/opt/urho3d/include/Urho3D/ThirdParty/Bullet,
+					/usr/local/opt/urho3d/include/Urho3D/ThirdParty/Lua,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = "";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-Wno-invalid-offsetof",
+					"-ffast-math",
+					"-pthread",
+					"-Qunused-arguments",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-no_weak_imports",
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/usr/local/opt/urho3d/lib/Urho3D/libUrho3D.a,
+					"-liconv",
+					"-framework",
+					AudioToolbox,
+					"-framework",
+					Carbon,
+					"-framework",
+					Cocoa,
+					"-framework",
+					CoreFoundation,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					CoreAudio,
+					"-framework",
+					CoreServices,
+					"-framework",
+					CoreVideo,
+					"-framework",
+					ForceFeedback,
+					"-framework",
+					IOKit,
+					"-framework",
+					OpenGL,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZombieShooter;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/pi29056/Documents/ZombieShooter;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		AD74170C71304BD1B444EFFB /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/pi29056/Documents/ZombieShooter;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		BA82AB11C5B3490192391C1A /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				SDKROOT = macosx;
+				SYMROOT = /Users/pi29056/Documents/ZombieShooter/build;
+			};
+			name = RelWithDebInfo;
+		};
+		C6B3DC096D06443DAA72B884 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/pi29056/Documents/ZombieShooter;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		D37BB3C5D6AB45339B46BBFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/pi29056/Documents/ZombieShooter/bin;
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -626,7 +792,7 @@
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = ZombieShooter;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/gilbertgwizdala/Documents/ZombieShooter;
+				SYMROOT = /Users/pi29056/Documents/ZombieShooter;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -637,109 +803,7 @@
 			};
 			name = Debug;
 		};
-		7F742D28359B45B386820657 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/gilbertgwizdala/Documents/ZombieShooter;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
-			};
-			name = RelWithDebInfo;
-		};
-		84BD4642E1474879B0DC1B87 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/gilbertgwizdala/Documents/ZombieShooter;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
-			};
-			name = Release;
-		};
-		97CAB4A1C47B44E2AE7D9B98 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/gilbertgwizdala/Documents/ZombieShooter;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
-			};
-			name = Debug;
-		};
-		A108A66A915B4086BD936E74 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = install;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/gilbertgwizdala/Documents/ZombieShooter;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
-			};
-			name = Debug;
-		};
-		B2094D4CF1A3402187ADF278 /* Release */ = {
+		E56534317EAB42BCA5451A8F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -753,7 +817,7 @@
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = ALL_BUILD;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/gilbertgwizdala/Documents/ZombieShooter;
+				SYMROOT = /Users/pi29056/Documents/ZombieShooter;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -763,123 +827,61 @@
 				);
 			};
 			name = Release;
-		};
-		BD6FCAF79D464F4089FA7F1A /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				SDKROOT = macosx;
-				SYMROOT = /Users/gilbertgwizdala/Documents/ZombieShooter/build;
-			};
-			name = RelWithDebInfo;
-		};
-		D0D47D57DB4548808614881B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = install;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/gilbertgwizdala/Documents/ZombieShooter;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
-			};
-			name = Release;
-		};
-		F26829B677F6493D818AB520 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/gilbertgwizdala/Documents/ZombieShooter;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-					"$(inherited)",
-				);
-			};
-			name = RelWithDebInfo;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3E024F44D2A749AF93C54222 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+		2825DE3809184A91AFB729CE /* Build configuration list for PBXProject "ZombieShooter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B2094D4CF1A3402187ADF278 /* Release */,
-				F26829B677F6493D818AB520 /* RelWithDebInfo */,
-				119918E273C84F3B8AA58E69 /* Debug */,
+				44CFF5BDD96E4910AD6FAB86 /* Release */,
+				BA82AB11C5B3490192391C1A /* RelWithDebInfo */,
+				8192CA547B6644AE9A43D80F /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		761C852B0BE8492498B63531 /* Build configuration list for PBXProject "ZombieShooter" */ = {
+		36810FD076BF49E6A1398C50 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2FFB645749654959B38E0C2A /* Release */,
-				BD6FCAF79D464F4089FA7F1A /* RelWithDebInfo */,
-				0281745F227A415CABDA09FE /* Debug */,
+				5E640C99AC5D40EBB2B3C562 /* Release */,
+				4FA2C80596C2477986808BCE /* RelWithDebInfo */,
+				066FB5BFABE34ABD879E8ED3 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B4CF0B7D9F9449B1AEC8ABF1 /* Build configuration list for PBXAggregateTarget "install" */ = {
+		59469482B0CE463B8338A143 /* Build configuration list for PBXNativeTarget "ZombieShooter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D0D47D57DB4548808614881B /* Release */,
-				4699D8284B6542A892CF4015 /* RelWithDebInfo */,
-				A108A66A915B4086BD936E74 /* Debug */,
+				9C6588281B6C4662B4D51A49 /* Release */,
+				992D45A4AFF94A0D9E3A04A3 /* RelWithDebInfo */,
+				D37BB3C5D6AB45339B46BBFF /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DD66AD2F68474A92A1D0CCDF /* Build configuration list for PBXNativeTarget "ZombieShooter" */ = {
+		CABA6EF25BAD453E9B863009 /* Build configuration list for PBXAggregateTarget "install" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				24F782A14D2C4948B3AEEC49 /* Release */,
-				6CC6178909C04932A64A01C4 /* RelWithDebInfo */,
-				7D56BA521CED46FE87EE9484 /* Debug */,
+				C6B3DC096D06443DAA72B884 /* Release */,
+				AD74170C71304BD1B444EFFB /* RelWithDebInfo */,
+				0EA118E0277F4B19BC9FF922 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E416D8A0D9EC40128D92646C /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+		DE6AB5C14E2D423A8EDC2B23 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				84BD4642E1474879B0DC1B87 /* Release */,
-				7F742D28359B45B386820657 /* RelWithDebInfo */,
-				97CAB4A1C47B44E2AE7D9B98 /* Debug */,
+				E56534317EAB42BCA5451A8F /* Release */,
+				765094988A75408CB440B367 /* RelWithDebInfo */,
+				459E5FE7C76F4014BA0DE6FD /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D2D53F8834684FEFA81CD069 /* Project object */;
+	rootObject = 63F255859ED34FACBA637D99 /* Project object */;
 }

@@ -14,40 +14,35 @@
 #include <Urho3D/Math/BoundingBox.h>
 #include <Urho3D/Graphics/Terrain.h>
 
+
 using namespace Urho3D;
 
 /// Custom logic component for moving the animated model and rotating at area edges.
-class Mover : public LogicComponent
+class ZombieMover : public LogicComponent
 {
-    URHO3D_OBJECT(Mover, LogicComponent);
+    URHO3D_OBJECT(ZombieMover, LogicComponent);
     
 public:
     /// Construct.
-    Mover(Context* context);
+    ZombieMover(Context* context);
     
-    /// Set motion parameters: forward movement speed, rotation speed, and movement boundaries.
-    void SetParameters(float moveSpeed, float rotateSpeed, const BoundingBox& bounds);
-    /// Handle scene update. Called by LogicComponent base class.
+    static void RegisterObject(Context* context);
+    
+    void SetParameters(float moveSpeed, float rotateSpeed);
     virtual void Update(float timeStep);
     
     /// Return forward movement speed.
     float GetMoveSpeed() const { return moveSpeed_; }
     /// Return rotation speed.
     float GetRotationSpeed() const { return rotationSpeed_; }
-    /// Return movement boundaries.
-    const BoundingBox& GetBounds() const { return bounds_; }
     
-    void SetTerrain(Terrain* terrain);
+    void Start() override;
     
 private:
     /// Forward movement speed.
     float moveSpeed_;
     /// Rotation speed.
     float rotationSpeed_;
-    /// Movement boundaries.
-    BoundingBox bounds_;
-    ///Terrain
-    Terrain *terrain;
 };
 
 #endif /* Mover_hpp */

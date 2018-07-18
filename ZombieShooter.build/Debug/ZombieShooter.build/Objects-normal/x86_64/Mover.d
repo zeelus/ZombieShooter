@@ -1,5 +1,5 @@
-dependencies: /Users/gilbertgwizdala/Documents/ZombieShooter/Mover.cpp \
-  /Users/gilbertgwizdala/Documents/ZombieShooter/Mover.hpp \
+dependencies: /Users/pi29056/Documents/ZombieShooter/Mover.cpp \
+  /Users/pi29056/Documents/ZombieShooter/Mover.hpp \
   /usr/local/opt/urho3d/include/Urho3D/Scene/LogicComponent.h \
   /usr/local/opt/urho3d/include/Urho3D/Scene/../Scene/Component.h \
   /usr/local/opt/urho3d/include/Urho3D/Scene/../Scene/Animatable.h \
@@ -59,4 +59,5 @@ dependencies: /Users/gilbertgwizdala/Documents/ZombieShooter/Mover.cpp \
   /usr/local/opt/urho3d/include/Urho3D/Scene/../Resource/XMLElement.h \
   /usr/local/opt/urho3d/include/Urho3D/Scene/../Resource/JSONFile.h \
   /usr/local/opt/urho3d/include/Urho3D/Scene/../Scene/SceneResolver.h \
+  /usr/local/opt/urho3d/include/Urho3D/Core/Context.h \
   /usr/local/opt/urho3d/include/Urho3D/DebugNew.h

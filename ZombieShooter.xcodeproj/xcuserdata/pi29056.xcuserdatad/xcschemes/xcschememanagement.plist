@@ -7,45 +7,22 @@
 		<key>ALL_BUILD.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 		<key>ZERO_CHECK.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<key>ZombieShooter.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<key>install.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
-		</dict>
-	</dict>
-	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>6124665307F144C0B7F5EADE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6E76B8D1D1BE4D7AA04DDCAC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>85A3FACF29584700B0D6BC35</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E5B970B543D54E1D8125DF54</key>
-		<dict>
-			<key>primary</key>
-			<true/>
 		</dict>
 	</dict>
 </dict>

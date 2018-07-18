@@ -6,7 +6,7 @@
 //
 
 #include "ZombieShooter.hpp"
-#include "Mover.hpp"
+#include "ZombieMover.hpp"
 
 #include <Urho3D/Core/CoreEvents.h>
 #include <Urho3D/Engine/Engine.h>
@@ -14,6 +14,7 @@
 #include <Urho3D/Graphics/AnimatedModel.h>
 #include <Urho3D/Graphics/Animation.h>
 #include <Urho3D/Graphics/AnimationState.h>
+#include <Urho3D/Graphics/AnimationController.h>
 #include <Urho3D/Graphics/Camera.h>
 #include <Urho3D/Graphics/DebugRenderer.h>
 #include <Urho3D/Graphics/Graphics.h>
@@ -22,6 +23,10 @@
 #include <Urho3D/Graphics/Octree.h>
 #include <Urho3D/Graphics/Renderer.h>
 #include <Urho3D/Graphics/Zone.h>
+#include <Urho3D/Graphics/Terrain.h>
+#include <Urho3D/Physics/RigidBody.h>
+#include <Urho3D/Physics/CollisionShape.h>
+#include <Urho3D/Physics/PhysicsWorld.h>
 #include <Urho3D/Input/Input.h>
 #include <Urho3D/Resource/ResourceCache.h>
 #include <Urho3D/Scene/Scene.h>
@@ -29,7 +34,6 @@
 #include <Urho3D/UI/Font.h>
 #include <Urho3D/UI/Text.h>
 #include <Urho3D/UI/UI.h>
-#include <Urho3D/Graphics/Terrain.h>
 #include <Urho3D/Audio/Sound.h>
 #include <Urho3D/Audio/SoundSource3D.h>
 #include <Urho3D/Audio/SoundListener.h>
@@ -37,47 +41,40 @@
 
 ZombieShooter::ZombieShooter(Context* context) : Application(context), drawDebug_(false)
 {
-    // Register an object factory for our custom Mover component so that we can create them to scene nodes
-    context->RegisterFactory<Mover>();
+    ZombieMover::RegisterObject(context);
+    Character::RegisterObject(context);
 }
 
 void ZombieShooter::Setup() {
-    engineParameters_[EP_LOG_NAME]     = GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
-    engineParameters_[EP_FULL_SCREEN]  = false;
-    engineParameters_["WindowWidth"]=1280;
-    engineParameters_["WindowHeight"]=720;
-    engineParameters_["WindowResizable"]=true;
-    engineParameters_[EP_HEADLESS]     = false;
-    engineParameters_[EP_SOUND]        = true;
+    engineParameters_[EP_LOG_NAME]          = GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
+    engineParameters_[EP_FULL_SCREEN]       = false;
+    engineParameters_["WindowWidth"]        = 1280;
+    engineParameters_["WindowHeight"]       = 720;
+    engineParameters_["WindowResizable"]    = true;
+    engineParameters_[EP_HEADLESS]          = false;
+    engineParameters_[EP_SOUND]             = true;
 }
 
 void ZombieShooter::Start()
 {
-    // Execute base class startup
     Application::Start();
     
     Setup();
     
-    // Create the scene content
     CreateScene();
     
-    // Create the UI content
-    CreateInstructions();
+    CreateCharacter();
     
-    // Setup the viewport for displaying the scene
     SetupViewport();
     
-    // Hook up to the frame update and render post-update events
     SubscribeToEvents();
     
-    // Set the mouse mode to use in the sample
     MouseMode(MM_ABSOLUTE);
 }
 
 const unsigned NUM_MODELS = 30;
 const float MODEL_MOVE_SPEED = 1.0f;
 const float MODEL_ROTATE_SPEED = 100.0f;
-const BoundingBox bounds(Vector3(-30.0f, 0.0f, -30.0f), Vector3(30.0f, 0.0f, 30.0f));
 
 void ZombieShooter::CreateScene()
 {
@@ -85,12 +82,9 @@ void ZombieShooter::CreateScene()
     
     scene_ = new Scene(context_);
     
-    // Create octree, use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
-    // Also create a DebugRenderer component so that we can draw debug geometry
     scene_->CreateComponent<Octree>();
     scene_->CreateComponent<DebugRenderer>();
     
-    // Create a Zone component for ambient lighting & fog control
     Node* zoneNode = scene_->CreateChild("Zone");
     Zone* zone = zoneNode->CreateComponent<Zone>();
     zone->SetBoundingBox(BoundingBox(-1000.0f, 1000.0f));
@@ -98,11 +92,6 @@ void ZombieShooter::CreateScene()
     zone->SetFogColor(Color(0.4f, 0.5f, 0.8f));
     zone->SetFogStart(100.0f);
     zone->SetFogEnd(300.0f);
-    
-    cameraNode_ = scene_->CreateChild("Camera");
-    Camera* camera = cameraNode_->CreateComponent<Camera>();
-    camera->SetFarClip(300.0f);
-    cameraNode_->SetPosition(Vector3(0.0f, 5.0f, 0.0f));
     
     Node* terrainNode=scene_->CreateChild("Terrain");
     terrainNode->SetPosition(Vector3(3.0f,-0.4f));
@@ -114,147 +103,124 @@ void ZombieShooter::CreateScene()
     terrain->SetMaterial(cache->GetResource<Material>("Materials/Terrain.xml"));
     terrain->SetCastShadows(true);
     terrain->SetOccluder(true);
+    
+    auto* terrainBody = terrainNode->CreateComponent<RigidBody>();
+    terrainBody->SetCollisionLayer(2);
+    
+    auto* terrainShape = terrainNode->CreateComponent<CollisionShape>();
+    terrainShape->SetTerrain();
 
     for (unsigned i = 0; i < NUM_MODELS; ++i)
     {
-        Node* modelNode = scene_->CreateChild("Zombie " + String(i));
-        modelNode->SetPosition(Vector3(Random(40.0f) - 20.0f, 0.0f, Random(40.0f) - 20.0f));
-        modelNode->SetRotation(Quaternion(0.0f, Random(360.0f), 0.0f));
-        modelNode->SetScale(0.02);
-        
-        Node* adjustNode = modelNode->CreateChild("AdjNode");
-        Quaternion qAdjRot(180, Vector3(0,1,0) ); // rotate it by 180
-        adjustNode->SetRotation( qAdjRot );
-        
-        AnimatedModel* modelObject = adjustNode->CreateComponent<AnimatedModel>();
-        modelObject->SetModel(cache->GetResource<Model>("Models/Zombie/Zombie.mdl"));
-        modelObject->SetMaterial(cache->GetResource<Material>("Models/Zombie/Materials/Material.xml"));
-        modelObject->SetCastShadows(true);
-        
-        
-        // Create an AnimationState for a walk animation. Its time position will need to be manually updated to advance the
-        // animation, The alternative would be to use an AnimationController component which updates the animation automatically,
-        // but we need to update the model's position manually in any case
-        Animation* walkAnimation = cache->GetResource<Animation>("Models/Zombie/ZombieWalk.ani");
-        
-        AnimationState* state = modelObject->AddAnimationState(walkAnimation);
-        // The state would fail to create (return null) if the animation was not found
-        if (state)
-        {
-            // Enable full blending weight and looping
-            state->SetWeight(1.0f);
-            state->SetLooped(true);
-            state->SetTime(Random(walkAnimation->GetLength()));
-        }
-        
-        // Create our custom Mover component that will move & animate the model during each frame's update
-        Mover* mover = modelNode->CreateComponent<Mover>();
-        mover->SetParameters(MODEL_MOVE_SPEED, MODEL_ROTATE_SPEED, bounds);
-        mover->SetTerrain(terrain);
+        CreateZombie(cache, i, terrain);
     }
+    
+    cameraNode_ = scene_->CreateChild("Camera");
+    Camera* camera = cameraNode_->CreateComponent<Camera>();
+    camera->SetFarClip(300.0f);
+    cameraNode_->SetPosition(Vector3(0.0, 0.0, -5.0));
+    
     
     Sound* sound = cache->GetResource<Sound>("Music/Ninja Gods.ogg");
     sound->SetLooped(true);
     Node* node = scene_->CreateChild("Sound");
     SoundSource* sound_source = node->CreateComponent<SoundSource>();
-    sound_source->Play(sound);
-
+    //sound_source->Play(sound);
+    
 }
 
-void ZombieShooter::CreateInstructions()
-{
-    ResourceCache* cache = GetSubsystem<ResourceCache>();
-    UI* ui = GetSubsystem<UI>();
+void ZombieShooter::CreateCharacter() {
     
-    // Construct new Text object, set string to display and font to use
-    Text* instructionText = ui->GetRoot()->CreateChild<Text>();
-    instructionText->SetText(
-                             "Use WASD keys and mouse/touch to move\n"
-                             "Space to toggle debug geometry"
-                             );
-    instructionText->SetFont(cache->GetResource<Font>("Fonts/Anonymous Pro.ttf"), 15);
-    // The text has multiple rows. Center them in relation to each other
-    instructionText->SetTextAlignment(HA_CENTER);
+    auto* cache = GetSubsystem<ResourceCache>();
     
-    // Position the text relative to the screen center
-    instructionText->SetHorizontalAlignment(HA_CENTER);
-    instructionText->SetVerticalAlignment(VA_CENTER);
-    instructionText->SetPosition(0, ui->GetRoot()->GetHeight() / 4);
+    Node* objectNode = scene_->CreateChild("Character");
+    objectNode->SetPosition(Vector3(0.0f, 1.0f, 0.0f));
+    
+    // spin node
+    Node* adjustNode = objectNode->CreateChild("AdjNode");
+    adjustNode->SetRotation( Quaternion(180, Vector3(0,1,0) ) );
+    
+    // Create the rendering component + animation controller
+    auto* object = adjustNode->CreateComponent<AnimatedModel>();
+    object->SetModel(cache->GetResource<Model>("Models/Mutant/Mutant.mdl"));
+    object->SetMaterial(cache->GetResource<Material>("Models/Mutant/Materials/mutant_M.xml"));
+    object->SetCastShadows(true);
+    adjustNode->CreateComponent<AnimationController>();
+    
+    // Set the head bone for manual control
+    object->GetSkeleton().GetBone("Mutant:Head")->animated_ = false;
+    
+    // Create rigidbody, and set non-zero mass so that the body becomes dynamic
+    auto* body = objectNode->CreateComponent<RigidBody>();
+    body->SetCollisionLayer(1);
+    body->SetMass(1.0f);
+    
+    // Set zero angular factor so that physics doesn't turn the character on its own.
+    // Instead we will control the character yaw manually
+    body->SetAngularFactor(Vector3::ZERO);
+    
+    // Set the rigidbody to signal collision also when in rest, so that we get ground collisions properly
+    body->SetCollisionEventMode(COLLISION_ALWAYS);
+    
+    // Set a capsule shape for collision
+    auto* shape = objectNode->CreateComponent<CollisionShape>();
+    shape->SetCapsule(0.7f, 1.8f, Vector3(0.0f, 0.9f, 0.0f));
+    
+    character_ = objectNode->CreateComponent<Character>();
+    
+}
+
+void ZombieShooter::CreateZombie(Urho3D::ResourceCache *cache, unsigned int i, Urho3D::Terrain *terrain) {
+    Node* modelNode = scene_->CreateChild("Zombie " + String(i));
+    float x = Random(40.0f) - 20.0f;
+    float z = Random(40.0f) - 20.0f;
+    float y = terrain->GetHeight(Vector3(x, 0, z)) + 0.1f;
+    modelNode->SetPosition(Vector3(x, y, z));
+    modelNode->SetRotation(Quaternion(0.0f, Random(360.0f), 0.0f));
+    modelNode->SetScale(0.01);
+    
+    Node* adjustNode = modelNode->CreateChild("AdjNode");
+    Quaternion qAdjRot(180, Vector3(0,1,0) ); // rotate it by 180
+    adjustNode->SetRotation( qAdjRot );
+    
+    AnimatedModel* modelObject = adjustNode->CreateComponent<AnimatedModel>();
+    modelObject->SetModel(cache->GetResource<Model>("Models/Zombie/Zombie.mdl"));
+    modelObject->SetMaterial(cache->GetResource<Material>("Models/Zombie/Materials/Material.xml"));
+    modelObject->SetCastShadows(true);
+    adjustNode->CreateComponent<AnimationController>();
+    
+    auto* body = modelNode->CreateComponent<RigidBody>();
+    body->SetCollisionLayer(1);
+    body->SetMass(1.0f);
+    body->SetAngularFactor(Vector3::ZERO);
+    body->SetCollisionEventMode(COLLISION_ALWAYS);
+    body->SetFriction(100.0f);
+    
+    auto* shape = modelNode->CreateComponent<CollisionShape>();
+    shape->SetCapsule(80.0f, 160.0f, Vector3(0.0f, 80.0f, 0.0f));
+    
+    ZombieMover* mover = modelNode->CreateComponent<ZombieMover>();
+    mover->SetParameters(MODEL_MOVE_SPEED, MODEL_ROTATE_SPEED);
 }
 
 void ZombieShooter::SetupViewport()
 {
     Renderer* renderer = GetSubsystem<Renderer>();
     
-    // Set up a viewport to the Renderer subsystem so that the 3D scene can be seen
     SharedPtr<Viewport> viewport(new Viewport(context_, scene_, cameraNode_->GetComponent<Camera>()));
     renderer->SetViewport(0, viewport);
 }
 
 void ZombieShooter::SubscribeToEvents()
 {
-    // Subscribe HandleUpdate() function for processing update events
     SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(ZombieShooter, HandleUpdate));
-    
-    // Subscribe HandlePostRenderUpdate() function for processing the post-render update event, sent after Renderer subsystem is
-    // done with defining the draw calls for the viewports (but before actually executing them.) We will request debug geometry
-    // rendering during that event
     SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(ZombieShooter, HandlePostRenderUpdate));
 }
 
-void ZombieShooter::MoveCamera(float timeStep)
-{
-    // Do not move if the UI has a focused element (the console)
-    if (GetSubsystem<UI>()->GetFocusElement())
-        return;
-    
-    Input* input = GetSubsystem<Input>();
-    
-    // Movement speed as world units per second
-    const float MOVE_SPEED = 20.0f;
-    // Mouse sensitivity as degrees per pixel
-    const float MOUSE_SENSITIVITY = 0.1f;
-    
-    // Use this frame's mouse motion to adjust camera node yaw and pitch. Clamp the pitch between -90 and 90 degrees
-    IntVector2 mouseMove = input->GetMouseMove();
-    yaw_ += MOUSE_SENSITIVITY * mouseMove.x_;
-    pitch_ += MOUSE_SENSITIVITY * mouseMove.y_;
-    pitch_ = Clamp(pitch_, -90.0f, 90.0f);
-    
-    // Construct new orientation for the camera scene node from yaw and pitch. Roll is fixed to zero
-    cameraNode_->SetRotation(Quaternion(pitch_, yaw_, 0.0f));
-    
-    // Read WASD keys and move the camera scene node to the corresponding direction if they are pressed
-    if (input->GetKeyDown(KEY_W))
-        cameraNode_->Translate(Vector3::FORWARD * MOVE_SPEED * timeStep);
-    if (input->GetKeyDown(KEY_S))
-        cameraNode_->Translate(Vector3::BACK * MOVE_SPEED * timeStep);
-    if (input->GetKeyDown(KEY_A))
-        cameraNode_->Translate(Vector3::LEFT * MOVE_SPEED * timeStep);
-    if (input->GetKeyDown(KEY_D))
-        cameraNode_->Translate(Vector3::RIGHT * MOVE_SPEED * timeStep);
-    
-    // Toggle debug geometry with space
-    if (input->GetKeyPress(KEY_SPACE))
-        drawDebug_ = !drawDebug_;
+void ZombieShooter::HandleUpdate(StringHash eventType, VariantMap& eventData) {
+
 }
 
-void ZombieShooter::HandleUpdate(StringHash eventType, VariantMap& eventData)
-{
-    using namespace Update;
-    
-    // Take the frame time step, which is stored as a float
-    float timeStep = eventData[P_TIMESTEP].GetFloat();
-    
-    // Move the camera, scale movement with time step
-    MoveCamera(timeStep);
-}
-
-void ZombieShooter::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData)
-{
-    // If draw debug mode is enabled, draw viewport debug geometry, which will show eg. drawable bounding boxes and skeleton
-    // bones. Note that debug geometry has to be separately requested each frame. Disable depth test so that we can see the
-    // bones properly
-    if (drawDebug_)
-        GetSubsystem<Renderer>()->DrawDebugGeometry(false);
+void ZombieShooter::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData) {
+    scene_->GetComponent<PhysicsWorld>()->DrawDebugGeometry(true);
 }

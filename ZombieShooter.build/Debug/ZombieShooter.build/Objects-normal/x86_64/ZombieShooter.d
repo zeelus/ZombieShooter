@@ -1,6 +1,5 @@
-dependencies: \
-  /Users/gilbertgwizdala/Documents/ZombieShooter/ZombieShooter.cpp \
-  /Users/gilbertgwizdala/Documents/ZombieShooter/ZombieShooter.hpp \
+dependencies: /Users/pi29056/Documents/ZombieShooter/ZombieShooter.cpp \
+  /Users/pi29056/Documents/ZombieShooter/ZombieShooter.hpp \
   /usr/local/opt/urho3d/include/Urho3D/Engine/Application.h \
   /usr/local/opt/urho3d/include/Urho3D/Engine/../Core/Context.h \
   /usr/local/opt/urho3d/include/Urho3D/Engine/../Core/../Container/HashSet.h \
@@ -78,10 +77,12 @@ dependencies: \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Scene/../Scene/ValueAnimationInfo.h \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Scene/../Scene/AnimationDefs.h \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../UI/UIBatch.h \
-  /Users/gilbertgwizdala/Documents/ZombieShooter/Mover.hpp \
-  /usr/local/opt/urho3d/include/Urho3D/Scene/LogicComponent.h \
-  /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Scene/../Scene/Component.h \
   /usr/local/opt/urho3d/include/Urho3D/Graphics/Terrain.h \
+  /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Graphics/../Scene/Component.h \
+  /Users/pi29056/Documents/ZombieShooter/Character.hpp \
+  /usr/local/opt/urho3d/include/Urho3D/Input/Controls.h \
+  /usr/local/opt/urho3d/include/Urho3D/Scene/LogicComponent.h \
+  /Users/pi29056/Documents/ZombieShooter/ZombieMover.hpp \
   /usr/local/opt/urho3d/include/Urho3D/Core/CoreEvents.h \
   /usr/local/opt/urho3d/include/Urho3D/Engine/EngineDefs.h \
   /usr/local/opt/urho3d/include/Urho3D/Graphics/AnimatedModel.h \
@@ -96,6 +97,7 @@ dependencies: \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Graphics/../Graphics/Drawable.h \
   /usr/local/opt/urho3d/include/Urho3D/Graphics/Animation.h \
   /usr/local/opt/urho3d/include/Urho3D/Graphics/AnimationState.h \
+  /usr/local/opt/urho3d/include/Urho3D/Graphics/AnimationController.h \
   /usr/local/opt/urho3d/include/Urho3D/Graphics/Camera.h \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Graphics/../Math/Frustum.h \
   /usr/local/opt/urho3d/include/Urho3D/Engine/../Core/../Math/../Math/Plane.h \
@@ -112,6 +114,19 @@ dependencies: \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Graphics/../Graphics/Batch.h \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Graphics/../Graphics/Viewport.h \
   /usr/local/opt/urho3d/include/Urho3D/Graphics/Zone.h \
+  /usr/local/opt/urho3d/include/Urho3D/Physics/RigidBody.h \
+  /usr/local/opt/urho3d/include/Urho3D/ThirdParty/Bullet/LinearMath/btMotionState.h \
+  /usr/local/opt/urho3d/include/Urho3D/ThirdParty/Bullet/LinearMath/btTransform.h \
+  /usr/local/opt/urho3d/include/Urho3D/ThirdParty/Bullet/LinearMath/btMatrix3x3.h \
+  /usr/local/opt/urho3d/include/Urho3D/ThirdParty/Bullet/LinearMath/btVector3.h \
+  /usr/local/opt/urho3d/include/Urho3D/ThirdParty/Bullet/LinearMath/btScalar.h \
+  /usr/local/opt/urho3d/include/Urho3D/ThirdParty/Bullet/LinearMath/btMinMax.h \
+  /usr/local/opt/urho3d/include/Urho3D/ThirdParty/Bullet/LinearMath/btAlignedAllocator.h \
+  /usr/local/opt/urho3d/include/Urho3D/ThirdParty/Bullet/LinearMath/btQuaternion.h \
+  /usr/local/opt/urho3d/include/Urho3D/ThirdParty/Bullet/LinearMath/btQuadWord.h \
+  /usr/local/opt/urho3d/include/Urho3D/Physics/CollisionShape.h \
+  /usr/local/opt/urho3d/include/Urho3D/Physics/PhysicsWorld.h \
+  /usr/local/opt/urho3d/include/Urho3D/ThirdParty/Bullet/LinearMath/btIDebugDraw.h \
   /usr/local/opt/urho3d/include/Urho3D/Resource/ResourceCache.h \
   /usr/local/opt/urho3d/include/Urho3D/Input/../UI/../Graphics/../Resource/../IO/File.h \
   /usr/local/opt/urho3d/include/Urho3D/Scene/Scene.h \

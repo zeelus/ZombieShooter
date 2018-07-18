@@ -1,2 +1,1 @@
-dependencies: \
-  /Users/gilbertgwizdala/Documents/ZombieShooter/MainSceneXXX.cpp
+dependencies: /Users/pi29056/Documents/ZombieShooter/MainSceneXXX.cpp
