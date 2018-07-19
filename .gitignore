@@ -30,3 +30,8 @@ Build/bin/CoreData/Shaders/HLSL/Cache
 Build
 bin/CoreData/Shaders/HLSL/Cache
 bin/Urho3D.log
+
+# Xcode files
+build
+ZombieShooter.build
+ZombieShooter.xcodeproj
