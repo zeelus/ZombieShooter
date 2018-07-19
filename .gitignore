@@ -34,4 +34,6 @@ bin/Urho3D.log
 # Xcode files
 build
 ZombieShooter.build
+ZombieShooter.build/
 ZombieShooter.xcodeproj
+ZombieShooter.xcodeproj/
