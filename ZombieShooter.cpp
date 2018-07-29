@@ -139,16 +139,17 @@ void ZombieShooter::CreateCharacter() {
     // spin node
     Node* adjustNode = objectNode->CreateChild("AdjNode");
     adjustNode->SetRotation( Quaternion(180, Vector3(0,1,0) ) );
+    adjustNode->SetScale(0.01);
     
     // Create the rendering component + animation controller
     auto* object = adjustNode->CreateComponent<AnimatedModel>();
-    object->SetModel(cache->GetResource<Model>("Models/Mutant/Mutant.mdl"));
-    object->SetMaterial(cache->GetResource<Material>("Models/Mutant/Materials/mutant_M.xml"));
+    object->SetModel(cache->GetResource<Model>("Models/Character/Character.mdl"));
+    object->SetMaterial(cache->GetResource<Material>("Models/Character/Materials/_Body.xml"));
     object->SetCastShadows(true);
     adjustNode->CreateComponent<AnimationController>();
     
-    // Set the head bone for manual control
-    object->GetSkeleton().GetBone("Mutant:Head")->animated_ = false;
+//    // Set the head bone for manual control
+//    object->GetSkeleton().GetBone("Mutant:Head")->animated_ = false;
     
     // Create rigidbody, and set non-zero mass so that the body becomes dynamic
     auto* body = objectNode->CreateComponent<RigidBody>();
@@ -219,6 +220,20 @@ void ZombieShooter::SubscribeToEvents()
 
 void ZombieShooter::HandleUpdate(StringHash eventType, VariantMap& eventData) {
 
+    auto* input = this->GetSubsystem<Input>();
+    
+    if (character_) {
+        
+        character_->controls_.Set(CTRL_FORWARD | CTRL_BACK | CTRL_LEFT | CTRL_RIGHT | CTRL_JUMP, false);
+        
+        character_->controls_.Set(CTRL_FORWARD, input->GetKeyDown(KEY_W));
+        character_->controls_.Set(CTRL_BACK, input->GetKeyDown(KEY_S));
+        character_->controls_.Set(CTRL_LEFT, input->GetKeyDown(KEY_A));
+        character_->controls_.Set(CTRL_RIGHT, input->GetKeyDown(KEY_D));
+        character_->controls_.Set(CTRL_JUMP, input->GetKeyDown(KEY_SPACE));
+        
+    }
+    
 }
 
 void ZombieShooter::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData) {
