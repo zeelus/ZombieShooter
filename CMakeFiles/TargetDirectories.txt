@@ -1,4 +1,0 @@
-/Users/pi29056/Documents/ZombieShooter/CMakeFiles/install.dir
-/Users/pi29056/Documents/ZombieShooter/CMakeFiles/ZombieShooter.dir
-/Users/pi29056/Documents/ZombieShooter/CMakeFiles/ALL_BUILD.dir
-/Users/pi29056/Documents/ZombieShooter/CMakeFiles/ZERO_CHECK.dir
