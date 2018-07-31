@@ -31,6 +31,13 @@ Build
 bin/CoreData/Shaders/HLSL/Cache
 bin/Urho3D.log
 
+# CMake
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+cmake_install.cmake
+
+
 # Xcode files
 build
 ZombieShooter.build
