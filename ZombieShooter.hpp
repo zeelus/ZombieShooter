@@ -13,6 +13,10 @@
 #include <Urho3D/Graphics/Terrain.h>
 #include "Character.hpp"
 
+const float CAMERA_MIN_DIST = 1.0f;
+const float CAMERA_INITIAL_DIST = 5.0f;
+const float CAMERA_MAX_DIST = 20.0f;
+
 namespace Urho3D
 {
     

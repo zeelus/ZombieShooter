@@ -149,7 +149,7 @@ void ZombieShooter::CreateCharacter() {
     adjustNode->CreateComponent<AnimationController>();
     
 //    // Set the head bone for manual control
-//    object->GetSkeleton().GetBone("Mutant:Head")->animated_ = false;
+    object->GetSkeleton().GetBone("Head")->animated_ = false;
     
     // Create rigidbody, and set non-zero mass so that the body becomes dynamic
     auto* body = objectNode->CreateComponent<RigidBody>();
@@ -232,10 +232,52 @@ void ZombieShooter::HandleUpdate(StringHash eventType, VariantMap& eventData) {
         character_->controls_.Set(CTRL_RIGHT, input->GetKeyDown(KEY_D));
         character_->controls_.Set(CTRL_JUMP, input->GetKeyDown(KEY_SPACE));
         
+        
+        character_->controls_.yaw_ += (float)input->GetMouseMoveX() * YAW_SENSITIVITY;
+        character_->controls_.pitch_ += (float)input->GetMouseMoveY() * YAW_SENSITIVITY;
+        character_->controls_.pitch_ = Clamp(character_->controls_.pitch_, -80.0f, 80.0f);
+        character_->GetNode()->SetRotation(Quaternion(character_->controls_.yaw_, Vector3::UP));
     }
     
 }
 
 void ZombieShooter::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData) {
-    scene_->GetComponent<PhysicsWorld>()->DrawDebugGeometry(true);
+    //scene_->GetComponent<PhysicsWorld>()->DrawDebugGeometry(true);
+    
+    Node* characterNode = character_->GetNode();
+    
+    // Get camera lookat dir from character yaw + pitch
+    const Quaternion& rot = characterNode->GetRotation();
+    Quaternion dir = rot * Quaternion(character_->controls_.pitch_, Vector3::RIGHT);
+    
+    // Turn head to camera pitch, but limit to avoid unnatural animation
+    Node* headNode = characterNode->GetChild("Head", true);
+    float limitPitch = Clamp(character_->controls_.pitch_, -45.0f, 45.0f);
+    Quaternion headDir = rot * Quaternion(limitPitch, Vector3(1.0f, 0.0f, 0.0f));
+    // This could be expanded to look at an arbitrary target, now just look at a point in front
+    Vector3 headWorldTarget = headNode->GetWorldPosition() + headDir * Vector3(0.0f, 0.0f, -1.0f);
+    headNode->LookAt(headWorldTarget, Vector3(0.0f, 1.0f, 0.0f));
+    
+    if (true)
+    {
+        cameraNode_->SetPosition(headNode->GetWorldPosition() + rot * Vector3(0.0f, 0.15f, 0.2f));
+        cameraNode_->SetRotation(dir);
+    }
+    else
+    {
+        // Third person camera: position behind the character
+        Vector3 aimPoint = characterNode->GetPosition() + rot * Vector3(0.0f, 1.7f, 0.0f);
+        
+        // Collide camera ray with static physics objects (layer bitmask 2) to ensure we see the character properly
+        Vector3 rayDir = dir * Vector3::BACK;
+        float rayDistance = CAMERA_INITIAL_DIST;
+        PhysicsRaycastResult result;
+        scene_->GetComponent<PhysicsWorld>()->RaycastSingle(result, Ray(aimPoint, rayDir), rayDistance, 2);
+        if (result.body_)
+            rayDistance = Min(rayDistance, result.distance_);
+        rayDistance = Clamp(rayDistance, CAMERA_MIN_DIST, CAMERA_MAX_DIST);
+        
+        cameraNode_->SetPosition(aimPoint + rayDir * rayDistance);
+        cameraNode_->SetRotation(dir);
+    }
 }

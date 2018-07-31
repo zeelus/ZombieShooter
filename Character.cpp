@@ -7,10 +7,10 @@
 
 #include <Urho3D/Core/Context.h>
 #include <Urho3D/Graphics/AnimationController.h>
+#include <Urho3D/Physics/RigidBody.h>
 #include <Urho3D/IO/MemoryBuffer.h>
 #include <Urho3D/Physics/PhysicsEvents.h>
 #include <Urho3D/Physics/PhysicsWorld.h>
-#include <Urho3D/Physics/RigidBody.h>
 #include <Urho3D/Scene/Scene.h>
 #include <Urho3D/Scene/SceneEvents.h>
 
@@ -43,13 +43,12 @@ void Character::Start()
 {
     // Component has been inserted into its scene node. Subscribe to events now
     SubscribeToEvent(GetNode(), E_NODECOLLISION, URHO3D_HANDLER(Character, HandleNodeCollision));
+    body = GetComponent<RigidBody>();
+    animCtrl = node_->GetComponent<AnimationController>(true);
 }
 
 void Character::FixedUpdate(float timeStep)
 {
-    /// \todo Could cache the components for faster access instead of finding them each frame
-    auto* body = GetComponent<RigidBody>();
-    auto* animCtrl = node_->GetComponent<AnimationController>(true);
     
     // Update the in air timer. Reset if grounded
     if (!onGround_)
@@ -96,26 +95,44 @@ void Character::FixedUpdate(float timeStep)
                 body->ApplyImpulse(Vector3::UP * JUMP_FORCE);
                 okToJump_ = false;
                 animCtrl->PlayExclusive("Models/Character/jump.ani", 0, false, 0.2f);
+                printf("JUmp1\n");
             }
         }
         else
             okToJump_ = true;
     }
     
-    if ( !onGround_ )
+    if ( !onGround_ && !softGrounded)
     {
         animCtrl->PlayExclusive("Models/Character/jump.ani", 0, false, 0.2f);
     }
     else
     {
         // Play walk animation if moving on ground, otherwise fade it out
-        if (softGrounded && !moveDir.Equals(Vector3::ZERO))
-            animCtrl->PlayExclusive("Models/Character/run.ani", 0, true, 0.2f);
-        else
+        if (softGrounded && !moveDir.Equals(Vector3::ZERO)) {
+            
+            if (controls_.IsDown(CTRL_FORWARD))
+                animCtrl->PlayExclusive("Models/Character/run.ani", 0, true, 0.2f);
+            
+            if (controls_.IsDown(CTRL_BACK))
+                animCtrl->PlayExclusive("Models/Character/walkBack.ani", 0, true, 0.2f);
+            
+            if (controls_.IsDown(CTRL_LEFT))
+                animCtrl->PlayExclusive("Models/Character/leftWalk.ani", 0, true, 0.2f);
+            
+            if (controls_.IsDown(CTRL_RIGHT))
+                animCtrl->PlayExclusive("Models/Character/rightWalk.ani", 0, true, 0.2f);
+            
+        } else {
             animCtrl->PlayExclusive("Models/Character/idle.ani", 0, true, 0.2f);
+        }
         
-        // Set walk animation speed proportional to velocity
-        animCtrl->SetSpeed("MModels/Character/run.ani", planeVelocity.Length() * 0.3f);
+        
+        // Set walk animations speed proportional to velocity
+        animCtrl->SetSpeed("Models/Character/run.ani", planeVelocity.Length() * 0.3f);
+        animCtrl->SetSpeed("Models/Character/walkBack.ani", planeVelocity.Length() * 0.3f);
+        animCtrl->SetSpeed("Models/Character/leftWalk.ani", planeVelocity.Length() * 0.3f);
+        animCtrl->SetSpeed("Models/Character/rightWalk.ani", planeVelocity.Length() * 0.3f);
     }
     
     // Reset grounded flag for next frame
@@ -135,13 +152,14 @@ void Character::HandleNodeCollision(StringHash eventType, VariantMap& eventData)
         Vector3 contactNormal = contacts.ReadVector3();
         /*float contactDistance = */contacts.ReadFloat();
         /*float contactImpulse = */contacts.ReadFloat();
-        
+
         // If contact is below node center and pointing up, assume it's a ground contact
         if (contactPosition.y_ < (node_->GetPosition().y_ + 1.0f))
         {
             float level = contactNormal.y_;
-            if (level > 0.75)
+            if (level > 0.75) {
                 onGround_ = true;
+            }
         }
     }
 }

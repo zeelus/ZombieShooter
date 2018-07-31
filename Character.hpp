@@ -12,6 +12,8 @@
 
 #include <Urho3D/Input/Controls.h>
 #include <Urho3D/Scene/LogicComponent.h>
+#include <Urho3D/Graphics/AnimationController.h>
+#include <Urho3D/Physics/RigidBody.h>
 
 using namespace Urho3D;
 
@@ -21,7 +23,7 @@ const unsigned CTRL_LEFT = 4;
 const unsigned CTRL_RIGHT = 8;
 const unsigned CTRL_JUMP = 16;
 
-const float MOVE_FORCE = 0.8f;
+const float MOVE_FORCE = 1.0f;
 const float INAIR_MOVE_FORCE = 0.02f;
 const float BRAKE_FORCE = 0.2f;
 const float JUMP_FORCE = 6.0f;
@@ -58,6 +60,9 @@ private:
     bool okToJump_;
     /// In air timer. Due to possible physics inaccuracy, character can be off ground for max. 1/10 second and still be allowed to move.
     float inAirTimer_;
+    
+    RigidBody* body;
+    AnimationController* animCtrl;
 };
 
 
