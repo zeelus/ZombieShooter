@@ -15,6 +15,7 @@
 #include <Urho3D/Scene/SceneEvents.h>
 
 #include "Character.hpp"
+#include "CharacterAnimationController.hpp"
 
 Character::Character(Context* context) :
 LogicComponent(context),
@@ -44,7 +45,8 @@ void Character::Start()
     // Component has been inserted into its scene node. Subscribe to events now
     SubscribeToEvent(GetNode(), E_NODECOLLISION, URHO3D_HANDLER(Character, HandleNodeCollision));
     body = GetComponent<RigidBody>();
-    animCtrl = node_->GetComponent<AnimationController>(true);
+    animCtrl = node_->GetComponent<CharacterAnimationController>(true);
+    animCtrl->setIsEmpty(true);
 }
 
 void Character::FixedUpdate(float timeStep)
@@ -94,8 +96,7 @@ void Character::FixedUpdate(float timeStep)
             {
                 body->ApplyImpulse(Vector3::UP * JUMP_FORCE);
                 okToJump_ = false;
-                animCtrl->PlayExclusive("Models/Character/jump.ani", 0, false, 0.2f);
-                printf("JUmp1\n");
+                animCtrl->PlayJump();
             }
         }
         else
@@ -104,27 +105,22 @@ void Character::FixedUpdate(float timeStep)
     
     if ( !onGround_ && !softGrounded)
     {
-        animCtrl->PlayExclusive("Models/Character/jump.ani", 0, false, 0.2f);
+        animCtrl->PlayJump();
     }
     else
     {
         // Play walk animation if moving on ground, otherwise fade it out
         if (softGrounded && !moveDir.Equals(Vector3::ZERO)) {
-            
             if (controls_.IsDown(CTRL_FORWARD))
-                animCtrl->PlayExclusive("Models/Character/run.ani", 0, true, 0.2f);
-            
+                animCtrl->PlayRun();
             if (controls_.IsDown(CTRL_BACK))
-                animCtrl->PlayExclusive("Models/Character/walkBack.ani", 0, true, 0.2f);
-            
+                animCtrl->PlayWalkBack();
             if (controls_.IsDown(CTRL_LEFT))
-                animCtrl->PlayExclusive("Models/Character/leftWalk.ani", 0, true, 0.2f);
-            
+                animCtrl->PlayWalkLeft();
             if (controls_.IsDown(CTRL_RIGHT))
-                animCtrl->PlayExclusive("Models/Character/rightWalk.ani", 0, true, 0.2f);
-            
+                animCtrl->PlayWalkRight();
         } else {
-            animCtrl->PlayExclusive("Models/Character/idle.ani", 0, true, 0.2f);
+            animCtrl->PlayIdle();
         }
         
         

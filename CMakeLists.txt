@@ -12,6 +12,11 @@ if (COMMAND cmake_policy)
     # Honor the visibility properties for SHARED target types only
     cmake_policy (SET CMP0063 OLD)
 endif ()
+
+set(CMAKE_CXX_STANDARD 11)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
 # Set project name
 project (ZombieShooter)
 # Set CMake modules search path

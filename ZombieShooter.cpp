@@ -7,6 +7,7 @@
 
 #include "ZombieShooter.hpp"
 #include "ZombieMover.hpp"
+#include "CharacterAnimationController.hpp"
 
 #include <Urho3D/Core/CoreEvents.h>
 #include <Urho3D/Engine/Engine.h>
@@ -24,6 +25,7 @@
 #include <Urho3D/Graphics/Renderer.h>
 #include <Urho3D/Graphics/Zone.h>
 #include <Urho3D/Graphics/Terrain.h>
+#include <Urho3D/Graphics/Skybox.h>
 #include <Urho3D/Physics/RigidBody.h>
 #include <Urho3D/Physics/CollisionShape.h>
 #include <Urho3D/Physics/PhysicsWorld.h>
@@ -53,6 +55,7 @@ void ZombieShooter::Setup() {
     engineParameters_["WindowResizable"]    = true;
     engineParameters_[EP_HEADLESS]          = false;
     engineParameters_[EP_SOUND]             = true;
+    engineParameters_[EP_VSYNC]             = true;
 }
 
 void ZombieShooter::Start()
@@ -93,6 +96,12 @@ void ZombieShooter::CreateScene()
     zone->SetFogStart(100.0f);
     zone->SetFogEnd(300.0f);
     
+    Node* skyNode=scene_->CreateChild("Sky");
+    skyNode->SetScale(1000.0f);
+    Skybox* skybox=skyNode->CreateComponent<Skybox>();
+    skybox->SetModel(cache->GetResource<Model>("Models/Box.mdl"));
+    skybox->SetMaterial(cache->GetResource<Material>("Materials/Skybox.xml"));
+    
     Node* terrainNode=scene_->CreateChild("Terrain");
     terrainNode->SetPosition(Vector3(3.0f,-0.4f));
     Urho3D::Terrain *terrain = terrainNode->CreateComponent<Terrain>();
@@ -117,7 +126,7 @@ void ZombieShooter::CreateScene()
     
     cameraNode_ = scene_->CreateChild("Camera");
     Camera* camera = cameraNode_->CreateComponent<Camera>();
-    camera->SetFarClip(300.0f);
+    camera->SetFarClip(200.0f);
     cameraNode_->SetPosition(Vector3(0.0, 0.0, -5.0));
     
     
@@ -146,11 +155,10 @@ void ZombieShooter::CreateCharacter() {
     object->SetModel(cache->GetResource<Model>("Models/Character/Character.mdl"));
     object->SetMaterial(cache->GetResource<Material>("Models/Character/Materials/_Body.xml"));
     object->SetCastShadows(true);
-    adjustNode->CreateComponent<AnimationController>();
+    adjustNode->CreateComponent<CharacterAnimationController>();
     
 //    // Set the head bone for manual control
     object->GetSkeleton().GetBone("Head")->animated_ = false;
-    
     // Create rigidbody, and set non-zero mass so that the body becomes dynamic
     auto* body = objectNode->CreateComponent<RigidBody>();
     body->SetCollisionLayer(1);
@@ -251,15 +259,17 @@ void ZombieShooter::HandlePostRenderUpdate(StringHash eventType, VariantMap& eve
     Quaternion dir = rot * Quaternion(character_->controls_.pitch_, Vector3::RIGHT);
     
     // Turn head to camera pitch, but limit to avoid unnatural animation
-    Node* headNode = characterNode->GetChild("Head", true);
+    Node* spineNode = characterNode->GetChild("Spine", true);
     float limitPitch = Clamp(character_->controls_.pitch_, -45.0f, 45.0f);
-    Quaternion headDir = rot * Quaternion(limitPitch, Vector3(1.0f, 0.0f, 0.0f));
+    Quaternion spineDir = rot * Quaternion(limitPitch, Vector3(1.0f, 0.0f, 0.0f));
     // This could be expanded to look at an arbitrary target, now just look at a point in front
-    Vector3 headWorldTarget = headNode->GetWorldPosition() + headDir * Vector3(0.0f, 0.0f, -1.0f);
-    headNode->LookAt(headWorldTarget, Vector3(0.0f, 1.0f, 0.0f));
+    Vector3 headWorldTarget = spineNode->GetWorldPosition() + spineDir * Vector3(0.0f, 0.0f, 1.0f);
+    spineNode->LookAt(headWorldTarget, Vector3(0.0f, 1.0f, 0.0f));
     
-    if (true)
+    
+    if (false)
     {
+        Node* headNode = characterNode->GetChild("Head", true);
         cameraNode_->SetPosition(headNode->GetWorldPosition() + rot * Vector3(0.0f, 0.15f, 0.2f));
         cameraNode_->SetRotation(dir);
     }

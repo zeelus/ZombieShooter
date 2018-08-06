@@ -12,7 +12,7 @@
 
 #include <Urho3D/Input/Controls.h>
 #include <Urho3D/Scene/LogicComponent.h>
-#include <Urho3D/Graphics/AnimationController.h>
+#include "CharacterAnimationController.hpp"
 #include <Urho3D/Physics/RigidBody.h>
 
 using namespace Urho3D;
@@ -62,7 +62,7 @@ private:
     float inAirTimer_;
     
     RigidBody* body;
-    AnimationController* animCtrl;
+    CharacterAnimationController* animCtrl;
 };
 
 
