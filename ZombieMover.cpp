@@ -6,6 +6,7 @@
 //
 
 #include "ZombieMover.hpp"
+#include "LiveComponent.hpp"
 
 #include <Urho3D/Core/Context.h>
 #include <Urho3D/IO/MemoryBuffer.h>
@@ -41,19 +42,46 @@ void ZombieMover::SetParameters(float moveSpeed, float rotationSpeed) {
 }
 
 void ZombieMover::Start() {
-    
+    SubscribeToEvent(GetNode(), E_NODECOLLISION, URHO3D_HANDLER(ZombieMover, HandleNodeCollision));
 }
 
 void ZombieMover::Update(float timeStep) {
     
-    node_->Translate(Vector3::FORWARD * moveSpeed_ * timeStep);
+    if(characterPtr) {
+        auto characterNode = characterPtr->GetNode();
+        Vector3 charcterZVector =  this->GetNode()->GetPosition() - characterNode->GetPosition();
+        float len = charcterZVector.Length();
+        
+        
+        if( len > 5.0) {
+            node_->Translate(Vector3::FORWARD * moveSpeed_ * timeStep);
+        } else {
+            node_->Translate(charcterZVector.Normalized() * moveSpeed_ * timeStep);
+            node_->LookAt(characterNode->GetPosition());
+        }
+        
+        node_->Translate(Vector3::FORWARD * moveSpeed_ * timeStep);
 
-    Vector3 pos = node_->GetPosition();
-
-    auto* animCtrl = node_->GetComponent<AnimationController>(true);
-    animCtrl->Play("Models/Zombie/ZombieWalk.ani", 0, true, 0.2f);
+        auto* animCtrl = node_->GetComponent<AnimationController>(true);
+        animCtrl->Play("Models/Zombie/ZombieWalk.ani", 0, true, 0.2f);
+    }
 
 }
 
+void ZombieMover::SetCharacter(Character* ptr) {
+    this->characterPtr = ptr;
+}
 
+void ZombieMover::HandleNodeCollision(StringHash eventType, VariantMap& eventData) {
+    
+    using namespace NodeCollision;
+    
+    Node* node = (Node*) eventData[P_OTHERNODE].GetPtr();
+    Character* character = node->GetComponent<Character>();
+    
+    if(character) {
+        auto live = node->GetComponent<LiveComponent>();
+        live->setLive(live->getLive() - 0.1);
+    }
+}
 

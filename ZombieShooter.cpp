@@ -8,6 +8,7 @@
 #include "ZombieShooter.hpp"
 #include "ZombieMover.hpp"
 #include "CharacterAnimationController.hpp"
+#include "LiveComponent.hpp"
 
 #include <Urho3D/Core/CoreEvents.h>
 #include <Urho3D/Engine/Engine.h>
@@ -45,6 +46,8 @@ ZombieShooter::ZombieShooter(Context* context) : Application(context), drawDebug
 {
     ZombieMover::RegisterObject(context);
     Character::RegisterObject(context);
+    LiveComponent::RegisterObject(context);
+    
 }
 
 void ZombieShooter::Setup() {
@@ -119,10 +122,14 @@ void ZombieShooter::CreateScene()
     auto* terrainShape = terrainNode->CreateComponent<CollisionShape>();
     terrainShape->SetTerrain();
 
+    
+    Vector<Node*> zList;
     for (unsigned i = 0; i < NUM_MODELS; ++i)
     {
-        CreateZombie(cache, i, terrain);
+        auto z = CreateZombie(cache, i, terrain);
+        zList.Push(z);
     }
+    this->zombies = zList;
     
     cameraNode_ = scene_->CreateChild("Camera");
     Camera* camera = cameraNode_->CreateComponent<Camera>();
@@ -176,10 +183,17 @@ void ZombieShooter::CreateCharacter() {
     shape->SetCapsule(0.7f, 1.8f, Vector3(0.0f, 0.9f, 0.0f));
     
     character_ = objectNode->CreateComponent<Character>();
+
+    objectNode->CreateComponent<LiveComponent>();
+    
+    for(auto zNode : this->zombies) {
+        ZombieMover* zMover = zNode->GetComponent<ZombieMover>();
+        zMover->SetCharacter(character_);
+    }
     
 }
 
-void ZombieShooter::CreateZombie(Urho3D::ResourceCache *cache, unsigned int i, Urho3D::Terrain *terrain) {
+Node* ZombieShooter::CreateZombie(Urho3D::ResourceCache *cache, unsigned int i, Urho3D::Terrain *terrain) {
     Node* modelNode = scene_->CreateChild("Zombie " + String(i));
     float x = Random(40.0f) - 20.0f;
     float z = Random(40.0f) - 20.0f;
@@ -210,6 +224,8 @@ void ZombieShooter::CreateZombie(Urho3D::ResourceCache *cache, unsigned int i, U
     
     ZombieMover* mover = modelNode->CreateComponent<ZombieMover>();
     mover->SetParameters(MODEL_MOVE_SPEED, MODEL_ROTATE_SPEED);
+    
+    return modelNode;
 }
 
 void ZombieShooter::SetupViewport()
@@ -267,7 +283,7 @@ void ZombieShooter::HandlePostRenderUpdate(StringHash eventType, VariantMap& eve
     spineNode->LookAt(headWorldTarget, Vector3(0.0f, 1.0f, 0.0f));
     
     
-    if (false)
+    if (true)
     {
         Node* headNode = characterNode->GetChild("Head", true);
         cameraNode_->SetPosition(headNode->GetWorldPosition() + rot * Vector3(0.0f, 0.15f, 0.2f));

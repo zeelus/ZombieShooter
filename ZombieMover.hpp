@@ -14,6 +14,8 @@
 #include <Urho3D/Math/BoundingBox.h>
 #include <Urho3D/Graphics/Terrain.h>
 
+#include "Character.hpp"
+
 
 using namespace Urho3D;
 
@@ -38,11 +40,18 @@ public:
     
     void Start() override;
     
+    void SetCharacter(Character* ptr);
+    
+    void HandleNodeCollision(StringHash eventType, VariantMap& eventData);
+    
 private:
     /// Forward movement speed.
     float moveSpeed_;
     /// Rotation speed.
     float rotationSpeed_;
+    
+    Character* characterPtr;
+    
 };
 
 #endif /* Mover_hpp */

@@ -82,12 +82,14 @@ private:
     
     void HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData);
     
-    void CreateZombie(Urho3D::ResourceCache *cache, unsigned int i, Urho3D::Terrain *terrain);
+    Node* CreateZombie(Urho3D::ResourceCache *cache, unsigned int i, Urho3D::Terrain *terrain);
     
     /// Flag for drawing debug geometry.
     bool drawDebug_;
 
     WeakPtr<Character> character_;
+    
+    Vector<Node*> zombies;
 };
 
 #endif /* ZombieShooter_hpp */
