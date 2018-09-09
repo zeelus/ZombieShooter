@@ -164,6 +164,12 @@ void ZombieShooter::CreateCharacter() {
     object->SetCastShadows(true);
     adjustNode->CreateComponent<CharacterAnimationController>();
     
+    object->GetSkeleton().GetBone("RightArm")->animated_ = false;
+    object->GetSkeleton().GetBone("RightArm")->node_->SetScale(0.00001);
+    object->GetSkeleton().GetBone("LeftArm")->animated_ = false;
+    object->GetSkeleton().GetBone("LeftArm")->node_->SetScale(0.00001);
+
+    
 //    // Set the head bone for manual control
     object->GetSkeleton().GetBone("Head")->animated_ = false;
     // Create rigidbody, and set non-zero mass so that the body becomes dynamic
