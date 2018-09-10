@@ -136,6 +136,14 @@ void ZombieShooter::CreateScene()
     camera->SetFarClip(200.0f);
     cameraNode_->SetPosition(Vector3(0.0, 0.0, -5.0));
     
+    auto adjGunNode = cameraNode_->CreateChild("Gun");
+    adjGunNode->SetRotation(Quaternion(-90, Vector3(0, 1, 0)));
+    adjGunNode->SetScale(0.001);
+    adjGunNode->SetPosition(Vector3(-0.1, -0.05, 0.2));
+    auto gunNode = adjGunNode->CreateComponent<AnimatedModel>();
+    gunNode->SetModel(cache->GetResource<Model>("Models/ak_47/ak_47.mdl"));
+    gunNode->SetMaterial(cache->GetResource<Material>("Models/ak_47/Materials/ak_47.xml"));
+    
     
     Sound* sound = cache->GetResource<Sound>("Music/Ninja Gods.ogg");
     sound->SetLooped(true);
@@ -171,7 +179,18 @@ void ZombieShooter::CreateCharacter() {
 
     
 //    // Set the head bone for manual control
+    
     object->GetSkeleton().GetBone("Head")->animated_ = false;
+    
+//    auto headNode = object->GetSkeleton().GetBone("Head")->node_;
+//    auto adjGunNode = headNode->CreateChild();
+//    adjGunNode->SetRotation(Quaternion(-90, Vector3(0, 1, 0)));
+//    adjGunNode->SetScale(0.1);
+//    adjGunNode->SetPosition(Vector3(0, 0, 30.0));
+//    auto gunNode = adjGunNode->CreateComponent<AnimatedModel>();
+//    gunNode->SetModel(cache->GetResource<Model>("Models/ak_47/ak_47.mdl"));
+//    gunNode->SetMaterial(cache->GetResource<Material>("Models/ak_47/Materials/ak_47.xml"));
+    
     // Create rigidbody, and set non-zero mass so that the body becomes dynamic
     auto* body = objectNode->CreateComponent<RigidBody>();
     body->SetCollisionLayer(1);
@@ -269,11 +288,6 @@ void ZombieShooter::HandleUpdate(StringHash eventType, VariantMap& eventData) {
         character_->GetNode()->SetRotation(Quaternion(character_->controls_.yaw_, Vector3::UP));
     }
     
-}
-
-void ZombieShooter::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData) {
-    //scene_->GetComponent<PhysicsWorld>()->DrawDebugGeometry(true);
-    
     Node* characterNode = character_->GetNode();
     
     // Get camera lookat dir from character yaw + pitch
@@ -281,12 +295,12 @@ void ZombieShooter::HandlePostRenderUpdate(StringHash eventType, VariantMap& eve
     Quaternion dir = rot * Quaternion(character_->controls_.pitch_, Vector3::RIGHT);
     
     // Turn head to camera pitch, but limit to avoid unnatural animation
-    Node* spineNode = characterNode->GetChild("Spine", true);
+    Node* headNode = characterNode->GetChild("Head", true);
     float limitPitch = Clamp(character_->controls_.pitch_, -45.0f, 45.0f);
     Quaternion spineDir = rot * Quaternion(limitPitch, Vector3(1.0f, 0.0f, 0.0f));
     // This could be expanded to look at an arbitrary target, now just look at a point in front
-    Vector3 headWorldTarget = spineNode->GetWorldPosition() + spineDir * Vector3(0.0f, 0.0f, 1.0f);
-    spineNode->LookAt(headWorldTarget, Vector3(0.0f, 1.0f, 0.0f));
+    Vector3 headWorldTarget = headNode->GetWorldPosition() + spineDir * Vector3(0.0f, 0.0f, 1.0f);
+    headNode->LookAt(headWorldTarget, Vector3(0.0f, 1.0f, 0.0f));
     
     
     if (true)
@@ -312,4 +326,9 @@ void ZombieShooter::HandlePostRenderUpdate(StringHash eventType, VariantMap& eve
         cameraNode_->SetPosition(aimPoint + rayDir * rayDistance);
         cameraNode_->SetRotation(dir);
     }
+    
+}
+
+void ZombieShooter::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData) {
+    //scene_->GetComponent<PhysicsWorld>()->DrawDebugGeometry(true);
 }
