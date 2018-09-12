@@ -9,6 +9,7 @@
 #include "ZombieMover.hpp"
 #include "CharacterAnimationController.hpp"
 #include "LiveComponent.hpp"
+#include "GunComponent.hpp"
 
 #include <Urho3D/Core/CoreEvents.h>
 #include <Urho3D/Engine/Engine.h>
@@ -44,9 +45,11 @@
 
 ZombieShooter::ZombieShooter(Context* context) : Application(context), drawDebug_(false)
 {
+    
     ZombieMover::RegisterObject(context);
     Character::RegisterObject(context);
     LiveComponent::RegisterObject(context);
+    GunComponent::RegisterObject(context);
     
 }
 
@@ -139,8 +142,10 @@ void ZombieShooter::CreateScene()
     auto adjGunNode = cameraNode_->CreateChild("Gun");
     adjGunNode->SetRotation(Quaternion(-90, Vector3(0, 1, 0)));
     adjGunNode->SetScale(0.001);
-    adjGunNode->SetPosition(Vector3(-0.1, -0.05, 0.2));
+    adjGunNode->SetPosition(Vector3(-0.1, -0.08, 0.2));
     auto gunNode = adjGunNode->CreateComponent<AnimatedModel>();
+    adjGunNode->CreateComponent<SoundSource>();
+    gun_ = adjGunNode->CreateComponent<GunComponent>();
     gunNode->SetModel(cache->GetResource<Model>("Models/ak_47/ak_47.mdl"));
     gunNode->SetMaterial(cache->GetResource<Material>("Models/ak_47/Materials/ak_47.xml"));
     
@@ -149,7 +154,8 @@ void ZombieShooter::CreateScene()
     sound->SetLooped(true);
     Node* node = scene_->CreateChild("Sound");
     SoundSource* sound_source = node->CreateComponent<SoundSource>();
-    //sound_source->Play(sound);
+//    sound_source->Play(sound);
+
     
 }
 
@@ -273,13 +279,14 @@ void ZombieShooter::HandleUpdate(StringHash eventType, VariantMap& eventData) {
     
     if (character_) {
         
-        character_->controls_.Set(CTRL_FORWARD | CTRL_BACK | CTRL_LEFT | CTRL_RIGHT | CTRL_JUMP, false);
+        character_->controls_.Set(CTRL_FORWARD | CTRL_BACK | CTRL_LEFT | CTRL_RIGHT | CTRL_JUMP | CTRL_LMOUSE, false);
         
         character_->controls_.Set(CTRL_FORWARD, input->GetKeyDown(KEY_W));
         character_->controls_.Set(CTRL_BACK, input->GetKeyDown(KEY_S));
         character_->controls_.Set(CTRL_LEFT, input->GetKeyDown(KEY_A));
         character_->controls_.Set(CTRL_RIGHT, input->GetKeyDown(KEY_D));
         character_->controls_.Set(CTRL_JUMP, input->GetKeyDown(KEY_SPACE));
+        gun_->controls_.Set(CTRL_LMOUSE, input->GetMouseButtonDown(MOUSEB_LEFT));
         
         
         character_->controls_.yaw_ += (float)input->GetMouseMoveX() * YAW_SENSITIVITY;

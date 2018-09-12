@@ -16,6 +16,7 @@
 
 #include "Character.hpp"
 #include "CharacterAnimationController.hpp"
+#include "ZombieShooter.hpp"
 
 Character::Character(Context* context) :
 LogicComponent(context),

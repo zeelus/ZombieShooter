@@ -12,6 +12,14 @@
 #include <Urho3D/Input/Input.h>
 #include <Urho3D/Graphics/Terrain.h>
 #include "Character.hpp"
+#include "GunComponent.hpp"
+
+const unsigned CTRL_FORWARD = 1;
+const unsigned CTRL_BACK = 2;
+const unsigned CTRL_LEFT = 4;
+const unsigned CTRL_RIGHT = 8;
+const unsigned CTRL_JUMP = 16;
+const unsigned CTRL_LMOUSE = 32;
 
 const float CAMERA_MIN_DIST = 1.0f;
 const float CAMERA_INITIAL_DIST = 5.0f;
@@ -88,6 +96,7 @@ private:
     bool drawDebug_;
 
     WeakPtr<Character> character_;
+    WeakPtr<GunComponent> gun_;
     
     Vector<Node*> zombies;
 };
