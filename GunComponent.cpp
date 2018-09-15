@@ -7,12 +7,16 @@
 
 #include "GunComponent.hpp"
 #include "ZombieShooter.hpp"
+#include "ZombieLiveComponent.hpp"
 
 #include <Urho3D/Audio/Sound.h>
 #include <Urho3D/Audio/SoundSource3D.h>
 #include <Urho3D/Audio/SoundListener.h>
 #include <Urho3D/Audio/Audio.h>
 #include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/Graphics/Octree.h>
+#include <Urho3D/Physics/PhysicsWorld.h>
+#include <Urho3D/Scene/Scene.h>
 
 using namespace Urho3D;
 
@@ -28,6 +32,8 @@ GunComponent::GunComponent(Context* context): Urho3D::LogicComponent(context) {
 void GunComponent::FixedUpdate(float timeStep) {
     auto* soundSource = GetComponent<SoundSource>();
     
+    currentTime += timeStep;
+    
     if(controls_.IsDown(CTRL_LMOUSE)) {
         ResourceCache* cache = GetSubsystem<ResourceCache>();
         Sound* sound = cache->GetResource<Sound>("Music/AK47.ogg");
@@ -35,9 +41,37 @@ void GunComponent::FixedUpdate(float timeStep) {
         if(!soundSource->IsPlaying()) {
             soundSource->Play(sound);
         }
-
+        
+        this->tryShoot(timeStep);
     }
     else {
         soundSource->Stop();
     }
+}
+
+void GunComponent::tryShoot(float timeStep) {
+    
+    if((currentTime - lastTimeShoot) >= 0.2) {
+        lastTimeShoot = currentTime;
+    } else {
+        return;
+    }
+    
+    PhysicsWorld* pw = GetScene()->GetComponent<PhysicsWorld>();
+    
+    Ray gunRay = Ray(cameraNode_->GetWorldPosition(), cameraNode_->GetWorldDirection());
+    PhysicsRaycastResult result;
+
+    pw->RaycastSingle(result, gunRay, maxDistance);
+    
+    if (result.body_) {
+        
+        Node* resultNode = result.body_->GetNode();
+        if(auto* live = resultNode->GetComponent<ZombieLiveComponent>()){
+            printf("%s \n", resultNode->GetName().CString());
+            live->getHit();
+        }
+        
+    }
+    
 }

@@ -18,9 +18,18 @@ class GunComponent: public LogicComponent {
     
     URHO3D_OBJECT(GunComponent, LogicComponent);
     
+    void tryShoot(float timeStep);
+    
+    float maxDistance = 100.0;
+    
+    float lastTimeShoot = 0.0;
+    float currentTime = 0.0;
+    
 public:
     
     GunComponent(Context* context);
+    
+    Node* cameraNode_;
     
     void FixedUpdate(float timeStep) override;
     

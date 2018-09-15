@@ -10,6 +10,7 @@
 #include "CharacterAnimationController.hpp"
 #include "LiveComponent.hpp"
 #include "GunComponent.hpp"
+#include "ZombieLiveComponent.hpp"
 
 #include <Urho3D/Core/CoreEvents.h>
 #include <Urho3D/Engine/Engine.h>
@@ -50,6 +51,7 @@ ZombieShooter::ZombieShooter(Context* context) : Application(context), drawDebug
     Character::RegisterObject(context);
     LiveComponent::RegisterObject(context);
     GunComponent::RegisterObject(context);
+    ZombieLiveComponent::RegisterObject(context);
     
 }
 
@@ -146,9 +148,15 @@ void ZombieShooter::CreateScene()
     auto gunNode = adjGunNode->CreateComponent<AnimatedModel>();
     adjGunNode->CreateComponent<SoundSource>();
     gun_ = adjGunNode->CreateComponent<GunComponent>();
+    gun_->cameraNode_ = cameraNode_;
     gunNode->SetModel(cache->GetResource<Model>("Models/ak_47/ak_47.mdl"));
     gunNode->SetMaterial(cache->GetResource<Material>("Models/ak_47/Materials/ak_47.xml"));
     
+    auto crosNode = cameraNode_->CreateChild("Cross");
+    auto crosModel = crosNode->CreateComponent<AnimatedModel>();
+    crosModel->SetModel(cache->GetResource<Model>("Models/Planet.mdl"));
+    crosNode->SetPosition(Vector3(0, 0, 0.2));
+    crosNode->SetScale(0.001);
     
     Sound* sound = cache->GetResource<Sound>("Music/Ninja Gods.ogg");
     sound->SetLooped(true);
@@ -255,6 +263,8 @@ Node* ZombieShooter::CreateZombie(Urho3D::ResourceCache *cache, unsigned int i, 
     
     ZombieMover* mover = modelNode->CreateComponent<ZombieMover>();
     mover->SetParameters(MODEL_MOVE_SPEED, MODEL_ROTATE_SPEED);
+    
+    auto zombieLive = modelNode->CreateComponent<ZombieLiveComponent>();
     
     return modelNode;
 }
