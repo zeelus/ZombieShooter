@@ -53,7 +53,7 @@ void ZombieMover::Update(float timeStep) {
         float len = charcterZVector.Length();
         
         
-        if( len > 5.0) {
+        if( len > 20.0) {
             node_->Translate(Vector3::FORWARD * moveSpeed_ * timeStep);
         } else {
             node_->Translate(charcterZVector.Normalized() * moveSpeed_ * timeStep);

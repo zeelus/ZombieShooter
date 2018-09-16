@@ -83,7 +83,7 @@ void ZombieShooter::Start()
     MouseMode(MM_ABSOLUTE);
 }
 
-const unsigned NUM_MODELS = 30;
+const unsigned NUM_MODELS = 40;
 const float MODEL_MOVE_SPEED = 1.0f;
 const float MODEL_ROTATE_SPEED = 100.0f;
 
@@ -162,9 +162,9 @@ void ZombieShooter::CreateScene()
     sound->SetLooped(true);
     Node* node = scene_->CreateChild("Sound");
     SoundSource* sound_source = node->CreateComponent<SoundSource>();
-//    sound_source->Play(sound);
+    sound_source->SetGain(0.2);
+    sound_source->Play(sound);
 
-    
 }
 
 void ZombieShooter::CreateCharacter() {
@@ -264,7 +264,7 @@ Node* ZombieShooter::CreateZombie(Urho3D::ResourceCache *cache, unsigned int i, 
     ZombieMover* mover = modelNode->CreateComponent<ZombieMover>();
     mover->SetParameters(MODEL_MOVE_SPEED, MODEL_ROTATE_SPEED);
     
-    auto zombieLive = modelNode->CreateComponent<ZombieLiveComponent>();
+    modelNode->CreateComponent<ZombieLiveComponent>();
     
     return modelNode;
 }
@@ -319,7 +319,6 @@ void ZombieShooter::HandleUpdate(StringHash eventType, VariantMap& eventData) {
     Vector3 headWorldTarget = headNode->GetWorldPosition() + spineDir * Vector3(0.0f, 0.0f, 1.0f);
     headNode->LookAt(headWorldTarget, Vector3(0.0f, 1.0f, 0.0f));
     
-    
     if (true)
     {
         Node* headNode = characterNode->GetChild("Head", true);
@@ -347,5 +346,5 @@ void ZombieShooter::HandleUpdate(StringHash eventType, VariantMap& eventData) {
 }
 
 void ZombieShooter::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData) {
-    //scene_->GetComponent<PhysicsWorld>()->DrawDebugGeometry(true);
+//    scene_->GetComponent<PhysicsWorld>()->DrawDebugGeometry(true);
 }

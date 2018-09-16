@@ -44,13 +44,15 @@ public:
     
     void HandleNodeCollision(StringHash eventType, VariantMap& eventData);
     
+    Character* characterPtr;
+    
 private:
     /// Forward movement speed.
     float moveSpeed_;
     /// Rotation speed.
     float rotationSpeed_;
     
-    Character* characterPtr;
+    
     
 };
 
