@@ -21,7 +21,7 @@ void LiveComponent::setLive(double live) {
     this->live = live;
     
     if(live < 0) {
-        printf("Game over");
+        printf("Game over\n");
     }
 }
 

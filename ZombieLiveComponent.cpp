@@ -73,11 +73,10 @@ void ZombieLiveComponent::zombieDie() {
 void ZombieLiveComponent::CreateRagdollBone(const String& boneName, ShapeType type, const Vector3& size, const Vector3& position,
                                       const Quaternion& rotation)
 {
-    // Find the correct child scene node recursively
+
     Node* boneNode = node_->GetChild(boneName, true);
     if (!boneNode)
     {
-//        URHO3D_LOGWARNING("Could not find bone " + boneName + " for creating ragdoll physics components");
         return;
     }
     
@@ -109,12 +108,10 @@ void ZombieLiveComponent::CreateRagdollConstraint(const String& boneName, const 
     Node* parentNode = node_->GetChild(parentName, true);
     if (!boneNode)
     {
-        //URHO3D_LOGWARNING("Could not find bone " + boneName + " for creating ragdoll constraint");
         return;
     }
     if (!parentNode)
     {
-        //URHO3D_LOGWARNING("Could not find bone " + parentName + " for creating ragdoll constraint");
         return;
     }
     

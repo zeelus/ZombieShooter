@@ -32,8 +32,6 @@ void Character::RegisterObject(Context* context)
 {
     context->RegisterFactory<Character>();
     
-    // These macros register the class attributes to the Context for automatic load / save handling.
-    // We specify the Default attribute mode which means it will be used both for saving into file, and network replication
     URHO3D_ATTRIBUTE("Controls Yaw", float, controls_.yaw_, 0.0f, AM_DEFAULT);
     URHO3D_ATTRIBUTE("Controls Pitch", float, controls_.pitch_, 0.0f, AM_DEFAULT);
     URHO3D_ATTRIBUTE("On Ground", bool, onGround_, false, AM_DEFAULT);
@@ -43,7 +41,6 @@ void Character::RegisterObject(Context* context)
 
 void Character::Start()
 {
-    // Component has been inserted into its scene node. Subscribe to events now
     SubscribeToEvent(GetNode(), E_NODECOLLISION, URHO3D_HANDLER(Character, HandleNodeCollision));
     body = GetComponent<RigidBody>();
     animCtrl = node_->GetComponent<CharacterAnimationController>(true);
@@ -53,19 +50,17 @@ void Character::Start()
 void Character::FixedUpdate(float timeStep)
 {
     
-    // Update the in air timer. Reset if grounded
     if (!onGround_)
         inAirTimer_ += timeStep;
     else
         inAirTimer_ = 0.0f;
-    // When character has been in air less than 1/10 second, it's still interpreted as being on ground
+    
     bool softGrounded = inAirTimer_ < INAIR_THRESHOLD_TIME;
     
-    // Update movement & animation
     const Quaternion& rot = node_->GetRotation();
     Vector3 moveDir = Vector3::ZERO;
     const Vector3& velocity = body->GetLinearVelocity();
-    // Velocity on the XZ plane
+    
     Vector3 planeVelocity(velocity.x_, 0.0f, velocity.z_);
     
     if (controls_.IsDown(CTRL_FORWARD))
