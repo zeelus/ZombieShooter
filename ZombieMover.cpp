@@ -26,8 +26,8 @@
 
 ZombieMover::ZombieMover(Context* context) :
 LogicComponent(context),
-moveSpeed_(0.0f),
-rotationSpeed_(0.0f) {
+moveSpeed_(INIT_ZOMBIE_MOVE_SPEED),
+rotationSpeed_(INIT_ZOMBIE_ROTATION_SPEED) {
     // Only the scene update event is needed: unsubscribe from the rest for optimization
     SetUpdateEventMask(USE_UPDATE);
 }
@@ -53,7 +53,7 @@ void ZombieMover::Update(float timeStep) {
         float len = charcterZVector.Length();
         
         
-        if( len > 20.0) {
+        if( len > ZOMBIE_RADAR_RADIUS ) {
             node_->Translate(Vector3::FORWARD * moveSpeed_ * timeStep);
         } else {
             node_->Translate(charcterZVector.Normalized() * moveSpeed_ * timeStep);
@@ -81,7 +81,7 @@ void ZombieMover::HandleNodeCollision(StringHash eventType, VariantMap& eventDat
     
     if(character) {
         auto live = node->GetComponent<LiveComponent>();
-        live->setLive(live->getLive() - 0.1);
+        live->setLive(live->getLive() - ZOMBIE_HIT_VALUE );
     }
 }
 

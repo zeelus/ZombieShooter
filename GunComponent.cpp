@@ -51,7 +51,7 @@ void GunComponent::FixedUpdate(float timeStep) {
 
 void GunComponent::tryShoot(float timeStep) {
     
-    if((currentTime - lastTimeShoot) >= 0.2) {
+    if((currentTime - lastTimeShoot) >= GUN_TIME_BETWEEN_SHOOTS) {
         lastTimeShoot = currentTime;
     } else {
         return;
@@ -68,7 +68,7 @@ void GunComponent::tryShoot(float timeStep) {
         
         Node* resultNode = result.body_->GetNode();
         if(auto* live = resultNode->GetComponent<ZombieLiveComponent>()){
-            printf("%s \n", resultNode->GetName().CString());
+            printf("%s get hit\n", resultNode->GetName().CString());
             live->getHit();
         }
         

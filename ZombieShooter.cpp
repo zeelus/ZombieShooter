@@ -196,15 +196,6 @@ void ZombieShooter::CreateCharacter() {
     
     object->GetSkeleton().GetBone("Head")->animated_ = false;
     
-//    auto headNode = object->GetSkeleton().GetBone("Head")->node_;
-//    auto adjGunNode = headNode->CreateChild();
-//    adjGunNode->SetRotation(Quaternion(-90, Vector3(0, 1, 0)));
-//    adjGunNode->SetScale(0.1);
-//    adjGunNode->SetPosition(Vector3(0, 0, 30.0));
-//    auto gunNode = adjGunNode->CreateComponent<AnimatedModel>();
-//    gunNode->SetModel(cache->GetResource<Model>("Models/ak_47/ak_47.mdl"));
-//    gunNode->SetMaterial(cache->GetResource<Material>("Models/ak_47/Materials/ak_47.xml"));
-    
     // Create rigidbody, and set non-zero mass so that the body becomes dynamic
     auto* body = objectNode->CreateComponent<RigidBody>();
     body->SetCollisionLayer(1);
@@ -346,5 +337,5 @@ void ZombieShooter::HandleUpdate(StringHash eventType, VariantMap& eventData) {
 }
 
 void ZombieShooter::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData) {
-//    scene_->GetComponent<PhysicsWorld>()->DrawDebugGeometry(true);
+    //scene_->GetComponent<PhysicsWorld>()->DrawDebugGeometry(true);
 }

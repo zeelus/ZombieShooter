@@ -19,6 +19,11 @@
 
 using namespace Urho3D;
 
+static float INIT_ZOMBIE_MOVE_SPEED = 0.0f;
+static float INIT_ZOMBIE_ROTATION_SPEED = 0.0f;
+static float ZOMBIE_RADAR_RADIUS = 20.0f;
+static float ZOMBIE_HIT_VALUE = 0.1f;
+
 /// Custom logic component for moving the animated model and rotating at area edges.
 class ZombieMover : public LogicComponent
 {

@@ -14,6 +14,8 @@
 
 using namespace Urho3D;
 
+static float GUN_TIME_BETWEEN_SHOOTS = 0.2f;
+
 class GunComponent: public LogicComponent {
     
     URHO3D_OBJECT(GunComponent, LogicComponent);
