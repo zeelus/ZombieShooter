@@ -2,7 +2,7 @@
 //  CharacterAnimationStateEmpty.hpp
 //  ZombieShooter
 //
-//  Created by pi29056 on 06.08.2018.
+//  Created by Gilbert Gwizdała on 06.08.2018.
 //
 
 #ifndef CharacterAnimationStateEmpty_hpp

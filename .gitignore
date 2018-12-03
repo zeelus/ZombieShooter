@@ -40,7 +40,7 @@ cmake_install.cmake
 
 # Xcode files
 build
-ZombieShooter.build
-ZombieShooter.build/
-ZombieShooter.xcodeproj
-ZombieShooter.xcodeproj/
+*.build
+*.build
+*.xcodeproj
+*.xcodeproj/

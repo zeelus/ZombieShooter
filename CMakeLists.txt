@@ -30,13 +30,7 @@ file (GLOB CPP_FILES *.cpp)
 file (GLOB_RECURSE HPP_FILES *.hpp)
 set (SOURCE_FILES ${CPP_FILES} ${HPP_FILES})
 
-# Define source files
-define_source_files ()
 # Setup target with resource copying
 setup_main_executable ()
-add_compile_options ("-std=c++11")
 
-ADD_LIBRARY(
-    ZombieShooterSource
-    ${HPP_FILES} ${CPP_FILES}
-)
+add_compile_options ("-std=c++11")

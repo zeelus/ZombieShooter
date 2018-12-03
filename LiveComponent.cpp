@@ -2,7 +2,7 @@
 //  LiveComponent.cpp
 //  ZombieShooter
 //
-//  Created by pi29056 on 08.09.2018.
+//  Created by Gilbert Gwizdała on 08.09.2018.
 //
 
 #include "LiveComponent.hpp"

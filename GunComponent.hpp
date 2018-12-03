@@ -2,7 +2,7 @@
 //  GunComponent.hpp
 //  ZombieShooter
 //
-//  Created by pi29056 on 12.09.2018.
+//  Created by Gilbert Gwizdała on 12.09.2018.
 //
 
 #ifndef GunComponent_hpp

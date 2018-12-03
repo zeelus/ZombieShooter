@@ -2,7 +2,7 @@
 //  CharacterAnimationController.hpp
 //  ZombieShooter
 //
-//  Created by pi29056 on 05.08.2018.
+//  Created by Gilbert Gwizdała on 05.08.2018.
 //
 
 #include <Urho3D/Graphics/AnimationController.h>

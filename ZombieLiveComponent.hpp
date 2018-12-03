@@ -2,7 +2,7 @@
 //  ZombieLiveComponent.hpp
 //  ZombieShooter
 //
-//  Created by pi29056 on 15.09.2018.
+//  Created by Gilbert Gwizdała on 15.09.2018.
 //
 
 #ifndef ZombieLiveComponent_hpp

@@ -2,7 +2,7 @@
 //  Character.cpp
 //  ZombieShooter
 //
-//  Created by pi29056 on 18.07.2018.
+//  Created by Gilbert Gwizdała on 18.07.2018.
 //
 
 #include <Urho3D/Core/Context.h>
